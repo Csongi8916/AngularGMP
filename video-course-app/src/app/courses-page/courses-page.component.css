@@ -1,0 +1,29 @@
+.Input {
+    width: 360px;
+    height: 48px;
+    border-radius: 3px;
+    border: solid 1px #d9dbe3;
+    background-color: #ffffff;
+    margin-top: 30px;
+    margin-left: 5%;
+  }
+
+  .SearchBtn {
+    width: 100px;
+    height: 48px;
+    margin-left: 5px;
+    border-radius: 3px;
+    background-color: #5cb85c;
+    cursor: pointer;
+  }
+
+  .SearchBtn span {
+    width: 56px;
+    height: 46px;
+    font-size: 18px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -0.13px;
+    color: #ffffff;
+  }

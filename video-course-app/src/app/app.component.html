@@ -1,7 +1,19 @@
-<div>
+<style>
+  .Main {
+    position: relative;
+    min-height: 100vh;
+    background-color: #f2f3f7;
+  }
+</style>
+
+<div style="min-height: 100%">
   <app-header></app-header>
-  <main>Main Content</main>
-  <app-footer></app-footer>
+  <app-course-breadcrumb></app-course-breadcrumb>
+  <main class="Main">
+    <app-courses-page></app-courses-page>
+  </main>
+  <app-footer>
+  </app-footer>
 </div>
 
 <router-outlet></router-outlet>

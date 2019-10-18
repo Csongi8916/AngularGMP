@@ -1,0 +1,19 @@
+.Root {
+  height: 64px;
+  padding-top: 15px;
+  padding-left: 5%;
+  background-color: #ffffff;
+}
+
+.Title {
+  width: 48px;
+  height: 24px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  color: #2c2f3c;
+}
