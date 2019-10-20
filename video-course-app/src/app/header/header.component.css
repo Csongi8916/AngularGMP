@@ -1,0 +1,19 @@
+.Root {
+  display: flex;
+  height: 64px;
+  background-color: #414452;
+}
+
+.Auth {
+  position: relative;
+  top: 18px;
+  margin-left: 20px;
+  flex-grow: 2;
+  justify-content: flex-end;
+}
+
+.Auth > a {
+  color: #fff;
+  text-decoration: none;
+  padding-left: 30px;
+}

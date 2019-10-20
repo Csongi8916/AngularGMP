@@ -1,29 +1,54 @@
 .Input {
-    width: 360px;
-    height: 48px;
-    border-radius: 3px;
-    border: solid 1px #d9dbe3;
-    background-color: #ffffff;
-    margin-top: 30px;
-    margin-left: 5%;
-  }
+  width: 360px;
+  height: 48px;
+  border-radius: 3px;
+  border: solid 1px #d9dbe3;
+  background-color: #ffffff;
+  margin-top: 30px;
+}
 
-  .SearchBtn {
-    width: 100px;
-    height: 48px;
-    margin-left: 5px;
-    border-radius: 3px;
-    background-color: #5cb85c;
-    cursor: pointer;
-  }
+.SearchBtn {
+  width: 100px;
+  height: 48px;
+  margin-left: 5px;
+  border-radius: 3px;
+  background-color: #5cb85c;
+  cursor: pointer;
+}
 
-  .SearchBtn span {
-    width: 56px;
-    height: 46px;
-    font-size: 18px;
-    font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
-    letter-spacing: -0.13px;
-    color: #ffffff;
-  }
+.SearchBtn span {
+  width: 56px;
+  height: 46px;
+  font-size: 18px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: -0.13px;
+  color: #ffffff;
+}
+
+.AddCourse {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.AddCourse button {
+  height: 36px;
+  border-radius: 3px;
+  margin-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #33BEFF;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.LoadMore {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 24px 0 rgba(18, 21, 35, 0.08);
+  background-color: #ffffff;
+}

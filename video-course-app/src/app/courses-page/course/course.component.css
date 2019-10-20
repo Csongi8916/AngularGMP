@@ -1,0 +1,24 @@
+.Root {
+  margin-top: 20px;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 1px 24px 0 rgba(18, 21, 35, 0.08);
+  background-color: #ffffff;
+}
+
+.Operation {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 20%;
+}
+
+.Operation button {
+  height: 36px;
+  margin-right: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 3px;
+  background-color: #33BEFF;
+  cursor: pointer;
+  color: #ffffff;
+}
