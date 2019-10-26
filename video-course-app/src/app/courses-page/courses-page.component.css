@@ -1,4 +1,9 @@
-.Input {
+.root {
+  padding-left: 5%;
+  padding-right: 5%
+}
+
+.input {
   width: 360px;
   height: 48px;
   border-radius: 3px;
@@ -7,7 +12,7 @@
   margin-top: 30px;
 }
 
-.SearchBtn {
+.search-btn {
   width: 100px;
   height: 48px;
   margin-left: 5px;
@@ -16,7 +21,7 @@
   cursor: pointer;
 }
 
-.SearchBtn span {
+.search-btn span {
   width: 56px;
   height: 46px;
   font-size: 18px;
@@ -27,12 +32,12 @@
   color: #ffffff;
 }
 
-.AddCourse {
+.add-course {
   display: flex;
   justify-content: flex-end;
 }
 
-.AddCourse button {
+.add-course button {
   height: 36px;
   border-radius: 3px;
   margin-top: 30px;
@@ -43,7 +48,7 @@
   color: #ffffff;
 }
 
-.LoadMore {
+.load-more {
   display: flex;
   justify-content: center;
   margin-top: 20px;

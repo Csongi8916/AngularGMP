@@ -1,11 +1,11 @@
-.Root {
+.root {
   height: 64px;
   padding-top: 15px;
   padding-left: 5%;
   background-color: #ffffff;
 }
 
-.Title {
+.title {
   width: 48px;
   height: 24px;
   font-family: SourceSansPro;

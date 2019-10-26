@@ -1,10 +1,16 @@
-.Root {
+.root {
   display: flex;
   height: 64px;
   background-color: #414452;
 }
 
-.Auth {
+.logo-container {
+  padding-left: 5%;
+  position: relative;
+  top: 13px;
+}
+
+.auth {
   position: relative;
   top: 18px;
   margin-left: 20px;
@@ -12,7 +18,7 @@
   justify-content: flex-end;
 }
 
-.Auth > a {
+.auth > a {
   color: #fff;
   text-decoration: none;
   padding-left: 30px;

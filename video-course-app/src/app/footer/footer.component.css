@@ -1,0 +1,19 @@
+.root {
+  width: auto;
+  height: 64px;
+  background-color: #414452;
+}
+
+.copyright {
+  width: 266px;
+  height: 24px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  text-align: right;
+  color: #c0c3ce;
+}
