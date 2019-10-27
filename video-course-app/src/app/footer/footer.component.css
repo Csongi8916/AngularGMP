@@ -1,4 +1,6 @@
 .root {
+  display: flex;
+  justify-content: flex-end;
   width: auto;
   height: 64px;
   background-color: #414452;
@@ -7,6 +9,7 @@
 .copyright {
   width: 266px;
   height: 24px;
+  margin-right: 5%;
   font-family: SourceSansPro;
   font-size: 14px;
   font-weight: normal;

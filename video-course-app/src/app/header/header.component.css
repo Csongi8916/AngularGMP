@@ -1,19 +1,21 @@
 .root {
   display: flex;
-  justify-content: flex-end;
   height: 64px;
   background-color: #414452;
 }
 
 .logo-container {
-  padding-left: 5%;
+  flex-grow: 1;
   position: relative;
   top: 13px;
 }
 
-.log-off {
-  width: 40px;
+.log-btn {
   height: 18px;
+  margin-right: 15px;
+  outline: none;
+  cursor: pointer;
+  border: none;
   font-family: SourceSansPro;
   font-size: 14px;
   font-weight: normal;
@@ -25,12 +27,15 @@
   background-color: #414452;
 }
 
-.auth {
-  /*position: relative;*/
-  /*top: 18px;*/
-  margin-left: 20px;
+.log-btn img {
+  margin-right: 5px;
+}
 
-  float: right;
+.auth {
+  position: relative;
+  top: 18px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .auth > a {

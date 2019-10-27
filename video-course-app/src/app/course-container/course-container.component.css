@@ -17,7 +17,7 @@
   height: 48px;
   margin-left: 5px;
   border-radius: 3px;
-  background-color: #5cb85c;
+  background-color: rgb(122, 212, 99);
   cursor: pointer;
 }
 
@@ -30,6 +30,7 @@
   font-style: normal;
   letter-spacing: -0.13px;
   color: #ffffff;
+  border-radius: 3px;
 }
 
 .add-course {
