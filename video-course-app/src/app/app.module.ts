@@ -7,8 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoComponent } from './logo/logo.component';
 import { CourseBreadcrumbComponent } from './course-breadcrumb/course-breadcrumb.component';
-import { CoursesPageComponent } from './courses-page/courses-page.component';
-import { CourseComponent } from './courses-page/course/course.component';
+import { CourseContainerComponent } from './course-container/course-container.component';
+import { CourseComponent } from './course-container/course/course.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { CourseComponent } from './courses-page/course/course.component';
     FooterComponent,
     LogoComponent,
     CourseBreadcrumbComponent,
-    CoursesPageComponent,
+    CourseContainerComponent,
     CourseComponent
   ],
   imports: [
