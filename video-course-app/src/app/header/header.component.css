@@ -1,5 +1,6 @@
 .root {
   display: flex;
+  justify-content: flex-end;
   height: 64px;
   background-color: #414452;
 }
@@ -10,12 +11,26 @@
   top: 13px;
 }
 
+.log-off {
+  width: 40px;
+  height: 18px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #fff;
+  background-color: #414452;
+}
+
 .auth {
-  position: relative;
-  top: 18px;
+  /*position: relative;*/
+  /*top: 18px;*/
   margin-left: 20px;
-  flex-grow: 2;
-  justify-content: flex-end;
+
+  float: right;
 }
 
 .auth > a {
