@@ -1,19 +1,24 @@
 <div class="root">
   <div>
-      <h1>Video Course 1. Name tag</h1>
-  </div>
-  <div class="course-item">
-    <div class="course-description">
-      <p>Learn about where you can find course descriptions, what information they include, how they work, and details
-        about various components of a course description. Course descriptions report information about a university or
-        college's classes. They're published both in course catalogs that outline degree requirements and in course
-        schedules that contain descriptions for all courses offered during a particular semester.
-      </p>
+    <div class="course-header">
+      <span class="course-title">{{ title }}</span>
+      <div class="course-info">
+        <fa-icon [icon]="clockIcon"></fa-icon>
+        <span>{{ duration }}</span>
+        <fa-icon [icon]="calendarIcon"></fa-icon>
+        <span>{{ date }}</span>
+      </div>
     </div>
-    <div class="operation">
-      <button>Edit</button>
-      <button>Delete</button>
-    </div>
+    <p class="course-description">{{ description }}</p>
   </div>
-
+  <div class="operation">
+    <button >
+      <fa-icon [icon]="editIcon"></fa-icon>
+      Edit
+    </button>
+    <button (click)="onDeleteCourse()">
+      <fa-icon [icon]="removeIcon"></fa-icon>
+      Delete
+    </button>
+  </div>
 </div>

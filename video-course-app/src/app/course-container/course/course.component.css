@@ -1,4 +1,5 @@
 .root {
+  display: flex;
   margin-top: 20px;
   border-radius: 8px;
   padding: 10px;
@@ -6,13 +7,36 @@
   background-color: #ffffff;
 }
 
-.course-item {
+.course-title {
+  flex-grow: 1;
+  color: #2c2f3c;
+  font-family: SourceSansPro;
+  font-size: 24px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+}
+.course-header {
   display: flex;
+}
+
+.course-info {
+  color: #b9bdce;
+  align-items: center;
+}
+
+.course-info span {
+  margin-right: 10px;
+}
+
+.course-info fa-icon {
+  margin-right: 5px;
 }
 
 .course-description {
   flex-grow: 2;
-  width: 801px;
   height: 77px;
   font-family: SourceSansPro;
   font-size: 14px;
@@ -27,6 +51,7 @@
 .operation {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   min-width: 20%;
 }
 

@@ -13,3 +13,7 @@ button {
   border-radius: 30px;
   border: none;
 }
+
+.icon {
+  margin-right: 5px;
+}

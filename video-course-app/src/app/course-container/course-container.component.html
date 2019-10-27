@@ -1,19 +1,19 @@
 <div class="root">
-  <input placeholder="Text to search" type="text" class="input" />
-  <button class="search-btn">
+  <input [(ngModel)]="searchInput" placeholder="Text to search" class="input" />
+  <button class="search-btn" (click)="onClickMe()">
     <span>Search</span>
   </button>
 
   <div class="add-course">
-    <button>Add course</button>
+    <button><fa-icon [icon]="addIcon" class="icon"></fa-icon>Add course</button>
   </div>
 
-  <course></course>
-  <course></course>
-  <course></course>
+  <div *ngFor="let course of courses">
+    <course id={{course.id}} title={{course.title}} duration={{course.duration}} date={{course.date}} description={{course.description}}></course>
+  </div>
 
   <div class="load-more">
-    <p><a href="#">Load more</a></p>
+    <p><button (click)="onLoadMore()"><a>Load more</a></button></p>
   </div>
 
 </div>
