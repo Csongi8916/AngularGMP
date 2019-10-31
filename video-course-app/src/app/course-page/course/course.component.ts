@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { faClock, faCalendar, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,19 +15,22 @@ export class CourseComponent implements OnInit {
   editIcon = faPencilAlt;
   removeIcon = faTrash;
 
-  @Input() id:number;
-  @Input() title:string;
-  @Input() duration:string;
-  @Input() date:string;
-  @Input() description:string;
+  @Input() id: number;
+  @Input() title: string;
+  @Input() duration: string;
+  @Input() date: string;
+  @Input() description: string;
 
   constructor() { }
+
+  @Output()
+  delete: EventEmitter<number> = new EventEmitter<number>();
 
   ngOnInit() {
   }
 
   onDeleteCourse() {
-    console.log(this.id);
+    this.delete.emit(this.id);
   }
 
 }
