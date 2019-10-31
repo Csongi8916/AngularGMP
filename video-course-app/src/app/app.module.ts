@@ -7,8 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoComponent } from './header/logo/logo.component';
 import { CourseBreadcrumbComponent } from './course-breadcrumb/course-breadcrumb.component';
-import { CourseContainerComponent } from './course-container/course-container.component';
-import { CourseComponent } from './course-container/course/course.component';
+import { CoursePageComponent } from './course-page/course-page.component';
+import { CourseComponent } from './course-page/course/course.component';
 import { FormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -21,7 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FooterComponent,
     LogoComponent,
     CourseBreadcrumbComponent,
-    CourseContainerComponent,
+    CoursePageComponent,
     CourseComponent,
   ],
   imports: [
