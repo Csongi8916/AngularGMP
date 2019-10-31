@@ -4,7 +4,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
-  selector: 'app-course-page',
+  selector: 'vc-course-page',
   templateUrl: './course-page.component.html',
   styleUrls: ['./course-page.component.css']
 })

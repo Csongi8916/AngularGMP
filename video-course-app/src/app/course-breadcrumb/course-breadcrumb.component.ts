@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-course-breadcrumb',
+  selector: 'vc-course-breadcrumb',
   templateUrl: './course-breadcrumb.component.html',
   styleUrls: ['./course-breadcrumb.component.css']
 })

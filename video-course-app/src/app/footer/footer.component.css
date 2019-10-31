@@ -1,6 +1,8 @@
-.root {
+.vc-footer-wrapper {
   display: flex;
   justify-content: flex-end;
+  position: sticky;
+  bottom: 0;
   width: auto;
   height: 64px;
   background-color: #414452;
