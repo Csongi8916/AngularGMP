@@ -11,7 +11,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 export class CoursePageComponent implements OnInit {
 
   private searchInput: string;
-  private courses: object[];
+  courses: object[];
   private addIcon = faPlus;
 
 

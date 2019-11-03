@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoursePageComponent } from './course-page.component';
+import { CourseComponent } from './course/course.component';
 
 describe('CoursesPageComponent', () => {
   let component: CoursePageComponent;
@@ -8,7 +10,8 @@ describe('CoursesPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CoursePageComponent]
+      imports: [FormsModule, FontAwesomeModule],
+      declarations: [CoursePageComponent, CourseComponent]
     })
       .compileComponents();
   }));
