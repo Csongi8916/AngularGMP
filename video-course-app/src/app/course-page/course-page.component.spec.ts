@@ -25,4 +25,9 @@ describe('CoursesPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should contain atleast one course', () => {
+    expect(component.courses.length).toBeGreaterThan(0);
+  });
+  
 });

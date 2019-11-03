@@ -24,4 +24,12 @@ describe('CourseComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should contain atleast one course', () => {
+    //component.onDeleteCourse();
+  });
 });

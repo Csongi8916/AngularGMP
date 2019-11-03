@@ -1,5 +1,7 @@
+$bg-color: #f2f3f7;
+
 .main {
   position: relative;
   min-height: 100vh;
-  background-color: #f2f3f7;
+  background-color: $bg-color;
 }

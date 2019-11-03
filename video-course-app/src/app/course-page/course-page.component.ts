@@ -6,7 +6,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'vc-course-page',
   templateUrl: './course-page.component.html',
-  styleUrls: ['./course-page.component.css']
+  styleUrls: ['./course-page.component.scss']
 })
 export class CoursePageComponent implements OnInit {
 

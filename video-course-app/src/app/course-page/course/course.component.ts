@@ -6,7 +6,7 @@ import { faClock, faCalendar, faPencilAlt, faTrash } from '@fortawesome/free-sol
 @Component({
   selector: 'course',
   templateUrl: './course.component.html',
-  styleUrls: ['./course.component.css']
+  styleUrls: ['./course.component.scss']
 })
 export class CourseComponent implements OnInit {
 
