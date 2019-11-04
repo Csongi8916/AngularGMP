@@ -10,9 +10,9 @@ describe('CourseComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FontAwesomeModule],
-      declarations: [ CourseComponent ]
+      declarations: [CourseComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -25,11 +25,17 @@ describe('CourseComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('should have value of input fields', () => {
+    console.log(`ID:  ${component.id}`);
+    debugger;
 
-  it('should contain atleast one course', () => {
-    //component.onDeleteCourse();
+    let hasId: boolean = component.id ? true : false;
+    let hasTitle: boolean = component.title ? true : false;
+    let hasDuration: boolean = component.duration ? true : false;
+    let hasDate: boolean = component.date ? true : false;
+    let hasDescription: boolean = component.description ? true : false;
+
+    let isExpectable = hasId && hasTitle && hasDuration && hasDate && hasDescription;
+    expect(isExpectable).toBe(true);
   });
 });
