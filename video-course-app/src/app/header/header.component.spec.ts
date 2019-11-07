@@ -23,4 +23,11 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have auth buttons', () => {
+    const courseElement: HTMLElement = fixture.nativeElement;
+    const authBtnElements = courseElement.querySelectorAll('.auth .log-btn');
+    expect(authBtnElements[0].textContent).toContain('login');
+    expect(authBtnElements[1].textContent).toContain('Log off');
+  });
 });

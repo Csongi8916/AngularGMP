@@ -18,13 +18,12 @@ module.exports = function (config) {
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, './coverage/video-course-app'),
       reports: ['html', 'lcovonly', 'text-summary'],
-      fixWebpackSourcePaths: true
-    },
-    customLaunchers: {
-      Chrome_with_debugging: {
-        base: 'Chrome',
-        flags: ['--remote-debugging-port=9222'],
-        debug: true
+      fixWebpackSourcePaths: true,
+      thresholds: {
+        statements: 80,
+        lines: 80,
+        branches: 80,
+        functions: 80
       }
     },
     reporters: ['progress', 'kjhtml'],
@@ -33,6 +32,13 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
+    customLaunchers: {
+      Chrome_with_debugging: {
+        base: 'Chrome',
+        flags: ['--remote-debugging-port=9222'],
+        debug: true
+      }
+    },
     singleRun: false,
     restartOnFileChange: true
   });

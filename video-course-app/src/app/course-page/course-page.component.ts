@@ -30,7 +30,7 @@ export class CoursePageComponent implements OnInit {
   }
 
   deleteCourse(event) {
-    console.log(event);
+    console.log(event.id);
   }
 
   onLoadMore() {

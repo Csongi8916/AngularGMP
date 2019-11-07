@@ -11,7 +11,7 @@
   </div>
 
   <div *ngFor="let course of courses">
-    <course id={{course.id}} title={{course.title}} duration={{course.duration}} date={{course.date}} description={{course.description}} (delete)="deleteCourse($event)">
+    <course [course]=course (delete)="deleteCourse($event)">
     </course>
   </div>
 

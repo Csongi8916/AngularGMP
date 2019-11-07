@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
 import { faClock, faCalendar, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
-
+import { Course } from '../../../Entities/Interfaces';
 
 @Component({
   selector: 'course',
@@ -15,22 +14,18 @@ export class CourseComponent implements OnInit {
   editIcon = faPencilAlt;
   removeIcon = faTrash;
 
-  @Input() id: number;
-  @Input() title: string;
-  @Input() duration: string;
-  @Input() date: string;
-  @Input() description: string;
+  @Input() course: Course;
 
   constructor() { }
 
   @Output()
-  delete: EventEmitter<number> = new EventEmitter<number>();
+  delete: EventEmitter<Course> = new EventEmitter<Course>();
 
   ngOnInit() {
   }
 
   onDeleteCourse() {
-    this.delete.emit(this.id);
+    this.delete.emit(this.course);
   }
 
 }

@@ -29,5 +29,6 @@ describe('CoursesPageComponent', () => {
   it('should contain atleast one course', () => {
     expect(component.courses.length).toBeGreaterThan(0);
   });
-  
+
+
 });

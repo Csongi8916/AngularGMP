@@ -1,4 +1,4 @@
-class User implements IUser {
+class User implements User {
   id: string;
   firstName: string;
   lastName: string;

@@ -1,15 +1,15 @@
 <div class="vc-course-wrapper">
   <div>
     <div class="course-header">
-      <span class="course-title">{{ title }}</span>
+      <span class="course-title">{{ course.title }}</span>
       <div class="course-info">
         <fa-icon [icon]="clockIcon"></fa-icon>
-        <span>{{ duration }}</span>
+        <span class="duration-text">{{ course.duration }}</span>
         <fa-icon [icon]="calendarIcon"></fa-icon>
-        <span>{{ date }}</span>
+        <span class="date-text">{{ course.date }}</span>
       </div>
     </div>
-    <p class="course-description">{{ description }}</p>
+    <p class="course-description">{{ course.description }}</p>
   </div>
   <div class="operation">
     <button>
