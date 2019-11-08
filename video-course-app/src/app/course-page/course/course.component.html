@@ -12,11 +12,11 @@
     <p class="course-description">{{ course.description }}</p>
   </div>
   <div class="operation">
-    <button>
+    <button (click)="onEditCourse()">
       <fa-icon [icon]="editIcon"></fa-icon>
       Edit
     </button>
-    <button (click)="onDeleteCourse()">
+    <button class="delete-btn" (click)="onDeleteCourse()">
       <fa-icon [icon]="removeIcon"></fa-icon>
       Delete
     </button>

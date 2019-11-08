@@ -1,3 +1,5 @@
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -30,5 +32,19 @@ describe('CoursesPageComponent', () => {
     expect(component.courses.length).toBeGreaterThan(0);
   });
 
+  it('should have load more btn', () => {
+    const element: HTMLElement = fixture.nativeElement;
+    const loadMoreBtn = element.querySelector('.load-more button');
+    expect(loadMoreBtn).toBeTruthy();
+    expect(loadMoreBtn.textContent.toLowerCase()).toContain('load more');
+  });
+
+  it('should run once search button click event handler', () => {
+    spyOn(component, 'onClickMe')
+    const element: DebugElement = fixture.debugElement;
+    const btnElement: HTMLElement = element.query(By.css('.search-btn')).nativeElement;
+    btnElement.click();
+    expect(component.onClickMe).toHaveBeenCalledTimes(1);
+  });
 
 });
