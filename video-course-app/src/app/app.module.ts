@@ -12,6 +12,7 @@ import { CourseComponent } from './course-page/course/course.component';
 import { FormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FreshCourseDirectiveDirective } from './fresh-course-directive.directive';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CourseBreadcrumbComponent,
     CoursePageComponent,
     CourseComponent,
+    FreshCourseDirectiveDirective,
   ],
   imports: [
     BrowserModule,

@@ -10,13 +10,20 @@
     </button>
   </div>
 
+<div *ngIf="courses.length > 0;else none_content">
   <div *ngFor="let course of courses">
-    <course [course]=course (delete)="deleteCourse($event)">
-    </course>
+    <course [course]=course (delete)="deleteCourse($event)"></course>
   </div>
-
+  
   <div class="load-more">
     <p><button (click)="onLoadMore()"><a>Load more</a></button></p>
   </div>
+</div>
+
+<ng-template #none_content>
+  <div class="load-more">
+    <p>No data. Feel free to add course</p>
+  </div>
+</ng-template>
 
 </div>

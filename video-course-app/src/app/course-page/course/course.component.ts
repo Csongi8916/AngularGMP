@@ -9,10 +9,7 @@ import { Course } from '../../../Entities/Interfaces';
 })
 export class CourseComponent implements OnInit {
 
-  clockIcon = faClock;
-  calendarIcon = faCalendar;
-  editIcon = faPencilAlt;
-  removeIcon = faTrash;
+  clockIcon; calendarIcon; editIcon; removeIcon; testStr; starCharacter;
 
   @Input() course: Course;
 
@@ -22,6 +19,12 @@ export class CourseComponent implements OnInit {
   delete: EventEmitter<Course> = new EventEmitter<Course>();
 
   ngOnInit() {
+    this.clockIcon = faClock;
+    this.calendarIcon = faCalendar;
+    this.editIcon = faPencilAlt;
+    this.removeIcon = faTrash;
+    this.testStr = "test";
+    this.starCharacter = "&#9733;";
   }
 
   onDeleteCourse() {

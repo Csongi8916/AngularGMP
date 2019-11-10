@@ -1,3 +1,7 @@
+$rate-bg-color: #e6e600;
+$rate-icon-color: #e6bc00;
+
+
 .vc-course-wrapper {
   display: flex;
   margin-top: 20px;
@@ -64,4 +68,12 @@
   background-color: #33BEFF;
   cursor: pointer;
   color: #ffffff;
+}
+
+.rate-icon {
+  color: $rate-icon-color;
+}
+
+.rate-course {
+  background-color: lighten( $rate-bg-color, 50% );
 }
