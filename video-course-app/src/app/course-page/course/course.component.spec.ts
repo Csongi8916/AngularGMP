@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
       </course>`
 })
 class TestHostComponent {
-  course: Course = { id: 1, title: 'Test Title', duration: '1h 28 min', date: '9 Nov, 2018', description: 'Test description' };
+  course: Course = { id: 1, title: 'Test Title', duration: '1h 28 min', date: '9 Nov, 2018', description: 'Test description', topRated: false };
   deleteEmitted: boolean = false;
   onDelete() {
     this.deleteEmitted = true;
@@ -48,7 +48,7 @@ describe('CourseComponent: Stand Alone Test', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CourseComponent);
     component = fixture.componentInstance;
-    let course: Course = { id: 1, title: 'Test Title', duration: '1h 28 min', date: '9 Nov, 2018', description: 'Test description' };
+    let course: Course = { id: 1, title: 'Test Title', duration: '1h 28 min', date: '9 Nov, 2018', description: 'Test description', topRated: false };
     component.course = course;
     fixture.detectChanges();
   });
@@ -85,7 +85,7 @@ describe('CourseComponent: Stand Alone Test', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(TestHostComponent);
       component = fixture.componentInstance;
-      let course: Course = { id: 1, title: 'Test Title', duration: '1h 28 min', date: '9 Nov, 2018', description: 'Test description' };
+      let course: Course = { id: 1, title: 'Test Title', duration: '1h 28 min', date: '9 Nov, 2018', description: 'Test description', topRated: false };
       component.course = course;
       fixture.detectChanges();
     });
