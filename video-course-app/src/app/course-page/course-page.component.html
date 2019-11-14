@@ -10,9 +10,10 @@
     </button>
   </div>
 
-  <div *ngIf="courses.length > 0;else none_content">
+  <div *ngIf="courses.length > 0; else none_content">
     <div *ngFor="let course of courses">
-      <course [course]=course (delete)="deleteCourse($event)"></course>
+      <course [course]=course (delete)=" deleteCourse($event)">
+      </course>
     </div>
 
     <div class="load-more">

@@ -23,7 +23,7 @@ export class CoursePageComponent implements OnInit {
     this.courses = [
       {
         id: 1,
-        title: "Video Course 1. Name tag",
+        title: "Video Course 2. Name tag",
         duration: 88,
         date: new Date("2019.11.09"),
         topRated: true,
@@ -31,7 +31,7 @@ export class CoursePageComponent implements OnInit {
       },
       {
         id: 2,
-        title: "Video Course 1. Name tag",
+        title: "Video Course 3. Name tag",
         duration: 210,
         date: new Date("2019.08.01"),
         topRated: false,
