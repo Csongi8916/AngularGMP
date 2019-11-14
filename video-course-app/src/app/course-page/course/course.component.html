@@ -1,5 +1,4 @@
-<div appFreshCourseDirective [courseDate]="course.date" class="vc-course-wrapper"
-  [ngClass]="{'rate-course': course.topRated}">
+<div appFreshCourseDirective [course]="course" class="vc-course-wrapper" [ngClass]="{'rate-course': course.topRated}">
   <div>
     <div class="course-header">
       <span class="course-title">
@@ -8,7 +7,7 @@
       </span>
       <div class="course-info">
         <fa-icon [icon]="clockIcon"></fa-icon>
-        <span class="duration-text">{{ course.duration | duration: course.duration }}</span>
+        <span class="duration-text">{{ course.duration | duration }}</span>
         <fa-icon [icon]="calendarIcon"></fa-icon>
         <span class="date-text">{{ course.date | date }}</span>
       </div>

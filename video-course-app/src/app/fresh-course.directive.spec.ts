@@ -1,6 +1,6 @@
-import { FreshCourseDirectiveDirective } from './fresh-course-directive.directive';
+import { FreshCourseDirective } from './fresh-course.directive';
 
-describe('FreshCourseDirectiveDirective', () => {
+describe('FreshCourseDirective', () => {
   it('should create an instance', () => {
     //TODO Test directive
     //const directive = new FreshCourseDirectiveDirective();

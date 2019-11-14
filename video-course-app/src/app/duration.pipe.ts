@@ -5,22 +5,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DurationPipe implements PipeTransform {
 
-  private hourIndex: number = 0;
-  private hourTextIndex: number = 1;
-  private minuteIndex: number = 2;
-  private minuteTextIndex: number = 3;
-  private durationSeparator: string
-
-  transform(duration: string): string {
-    const durationParts: string[] = duration.split(' ');
-    if (durationParts[this.hourIndex] === '0') {
-      return [durationParts[this.minuteIndex], durationParts[3]].join('');
+  transform(duration: number): string {
+    if (duration < 60) {
+      return `${duration}min`;
     }
 
-    const hourDurationPart: string = [durationParts[this.hourIndex], durationParts[this.hourTextIndex]].join('');
-    const minuteDurationPart: string = [durationParts[this.minuteIndex], durationParts[this.minuteTextIndex]].join('');
-    const formattedDuration: string = [hourDurationPart, minuteDurationPart].join(' ');
-    return formattedDuration;
+    const hour = Math.floor(duration / 60);
+    const minute = duration % 60;
+    return `${hour}h ${minute}min`;
   }
 
 }

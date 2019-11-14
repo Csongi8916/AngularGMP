@@ -7,8 +7,8 @@ export interface User {
 export interface Course {
   id: number;
   title: string;
-  duration: string;
-  date: string;
+  duration: number;
+  date: Date;
   description: string;
   topRated: boolean;
 }

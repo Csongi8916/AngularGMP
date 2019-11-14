@@ -12,7 +12,7 @@ import { CourseComponent } from './course-page/course/course.component';
 import { FormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FreshCourseDirectiveDirective } from './fresh-course-directive.directive';
+import { FreshCourseDirective } from './fresh-course.directive';
 import { DurationPipe } from './duration.pipe';
 
 
@@ -25,7 +25,7 @@ import { DurationPipe } from './duration.pipe';
     CourseBreadcrumbComponent,
     CoursePageComponent,
     CourseComponent,
-    FreshCourseDirectiveDirective,
+    FreshCourseDirective,
     DurationPipe,
   ],
   imports: [
