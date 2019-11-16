@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FreshCourseDirective } from './fresh-course.directive';
 import { DurationPipe } from './duration.pipe';
+import { FilterPipe } from './shared/pipes/filter/filter.pipe';
+import { OrderbyPipe } from './shared/pipes/orderby/orderby.pipe';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { DurationPipe } from './duration.pipe';
     CourseComponent,
     FreshCourseDirective,
     DurationPipe,
+    FilterPipe,
+    OrderbyPipe,
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@
   </div>
 
   <div *ngIf="courses.length > 0; else none_content">
-    <div *ngFor="let course of courses">
+    <div *ngFor="let course of courses | filter: searchInput | orderby">
       <course [course]=course (delete)=" deleteCourse($event)">
       </course>
     </div>
