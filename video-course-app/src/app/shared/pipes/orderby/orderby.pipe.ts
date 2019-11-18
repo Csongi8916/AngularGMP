@@ -11,8 +11,6 @@ export class OrderbyPipe implements PipeTransform {
       return b.sortable.getTime() - a.sortable.getTime();
     });
 
-    debugger;
-
     return orderedInputs;
   }
 
