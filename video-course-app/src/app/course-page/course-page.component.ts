@@ -3,6 +3,8 @@ import { Component, OnInit, NgZone, ChangeDetectorRef } from '@angular/core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Course } from '../../Entities/Interfaces';
 import { CourseService } from '../services/course.service';
+import { MatDialog } from '@angular/material';
+import { ConfirmModalComponent } from '../shared/UI/confirm-modal/confirm-modal.component';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class CoursePageComponent implements OnInit {
   private addIcon = faPlus;
 
 
-  constructor(private courseService: CourseService) {
+  constructor(private courseService: CourseService, public dialog: MatDialog) {
     console.log('Running: constructor()');
   }
 
@@ -32,6 +34,7 @@ export class CoursePageComponent implements OnInit {
 
   deleteCourse(event) {
     console.log(event.id);
+    this.dialog.open(ConfirmModalComponent);
     this.courseService.removeCourse(event.id);
   }
 
