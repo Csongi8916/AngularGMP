@@ -2,7 +2,7 @@
   <div class="logo-container">
     <vc-logo></vc-logo>
   </div>
-  <div class="auth">
+  <div *ngIf="!authService.IsAuthenticated()" class="auth">
     <button class="log-btn" routerLink="/login" routerLinkActive="active">
       <img src="../../assets/ic-user.svg" />
       <span>User login</span>

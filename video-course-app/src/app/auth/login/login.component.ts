@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { MatCardModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { AuthServiceService } from '../services/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +12,16 @@ import { MatCardModule, MatInputModule, MatButtonModule } from '@angular/materia
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  email: string;
+  password: string;
+
+  constructor(private authService: AuthServiceService) { }
 
   ngOnInit() {
   }
 
-  submit() {
-    console.log('submit...');
+  LoginClickHandler() {
+    console.log(this.email, this.password);
+    this.authService.Login(this.email, this.password);
   }
-
-  @Output() submitEM = new EventEmitter();
-
 }
