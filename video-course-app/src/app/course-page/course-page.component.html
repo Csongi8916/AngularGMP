@@ -1,4 +1,5 @@
 <div class="vc-course-page-wrapper">
+  <vc-course-breadcrumb></vc-course-breadcrumb>
   <input [(ngModel)]="searchInput" placeholder="Text to search" class="input" />
   <button class="search-btn" (click)="onClickMe()">
     <span>Search</span>
@@ -11,8 +12,8 @@
   </div>
 
   <div *ngIf="courses.length > 0; else none_content">
-    <div *ngFor="let course of courses | filter: searchInput | orderby">
-      <course [course]=course (delete)=" deleteCourse($event)">
+    <div *ngFor="let course of courses | filter: searchInput | orderby; trackBy: trackByFunc">
+      <course [course]=course (delete)="deleteCourse($event)">
       </course>
     </div>
 

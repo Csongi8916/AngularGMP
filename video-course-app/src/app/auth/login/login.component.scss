@@ -1,0 +1,26 @@
+.login-form {
+    display: flex;
+    min-height: 70vh;
+    justify-content: center;
+    align-items: center;
+
+  .mat-card {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 300px;
+  }
+
+  .mat-form-field {
+    input {
+      width: 100%;
+    }
+  }
+
+  .button {
+    display: flex;
+     justify-content: flex-end;
+  }
+
+}
+

@@ -1,10 +1,11 @@
-import { Component, OnInit, NgZone, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, NgZone, ViewContainerRef, ChangeDetectorRef, OnChanges } from '@angular/core';
 
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Course } from '../../Entities/Interfaces';
 import { CourseService } from '../services/course.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmModalComponent } from '../shared/UI/confirm-modal/confirm-modal.component';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -12,14 +13,14 @@ import { ConfirmModalComponent } from '../shared/UI/confirm-modal/confirm-modal.
   templateUrl: './course-page.component.html',
   styleUrls: ['./course-page.component.scss']
 })
-export class CoursePageComponent implements OnInit {
+export class CoursePageComponent implements OnInit, OnChanges {
 
   private searchInput: string;
   courses: Course[];
   private addIcon = faPlus;
 
 
-  constructor(private courseService: CourseService, public dialog: MatDialog) {
+  constructor(private courseService: CourseService, public dialog: MatDialog, public ref: ChangeDetectorRef) {
     console.log('Running: constructor()');
   }
 
@@ -28,14 +29,32 @@ export class CoursePageComponent implements OnInit {
     console.log('Running: ngOnInit()');
   }
 
-  getCourses(): void {
-    this.courses = this.courseService.getCourses();
+  getCourses() {
+    this.courseService.courses.subscribe((data: Course[]) => {
+      this.courses = data;
+      console.log(this.courses)
+    });
   }
 
   deleteCourse(event) {
     console.log(event.id);
-    this.dialog.open(ConfirmModalComponent);
-    this.courseService.removeCourse(event.id);
+    const dialogRef = this.dialog.open(ConfirmModalComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        //console.log(event.id);
+        this.courseService.removeCourse(event.id);
+        this.courseService.cast.subscribe(data => {
+          this.courses = data;
+        })
+      }
+    });
+  }
+
+  public trackByFunc(index, course) {
+    if (!course) {
+      return null;
+    }
+    return course.id;
   }
 
   onLoadMore() {
@@ -46,9 +65,14 @@ export class CoursePageComponent implements OnInit {
     console.log(`${this.searchInput}`);
   }
 
+  ngOnChanges() {
+    console.log('OnChanges')
+    this.getCourses();
+  }
+
   //other hooks:
 
-  ngOnChanges() {
+  /*ngOnChanges() {
     console.log('Running: ngOnChanges()');
   }
 
@@ -74,6 +98,6 @@ export class CoursePageComponent implements OnInit {
 
   ngOnDestroy() {
     console.log('Running: ngOnDestroy()');
-  }
+  }*/
 
 }

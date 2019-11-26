@@ -34,5 +34,4 @@ export class CourseComponent implements OnInit {
   onEditCourse() {
     console.log('onEditCourse', this.course);
   }
-
 }

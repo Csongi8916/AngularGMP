@@ -19,6 +19,7 @@ import { FilterPipe } from './shared/pipes/filter/filter.pipe';
 import { OrderbyPipe } from './shared/pipes/orderby/orderby.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmModalComponent } from './shared/UI/confirm-modal/confirm-modal.component';
+import { LoginComponent } from './auth/login/login.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { ConfirmModalComponent } from './shared/UI/confirm-modal/confirm-modal.c
     FilterPipe,
     OrderbyPipe,
     ConfirmModalComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,9 @@ import { ConfirmModalComponent } from './shared/UI/confirm-modal/confirm-modal.c
     FontAwesomeModule,
     BrowserAnimationsModule,
     MatDialogModule
+  ],
+  entryComponents: [
+    ConfirmModalComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
