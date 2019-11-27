@@ -8,10 +8,16 @@ import { AuthServiceService } from '../auth/services/auth-service.service';
 })
 export class HeaderComponent implements OnInit {
 
+  isLoginPage: boolean;
+
   constructor(public authService: AuthServiceService) {
   }
 
   ngOnInit() {
+  }
+
+  ngDoCheck() {
+    this.isLoginPage = window.location.pathname === '/login';
   }
 
   LogoutClickHandler() {

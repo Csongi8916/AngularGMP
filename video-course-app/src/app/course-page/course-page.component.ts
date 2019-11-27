@@ -5,7 +5,6 @@ import { Course } from '../../Entities/Interfaces';
 import { CourseService } from '../services/course.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmModalComponent } from '../shared/UI/confirm-modal/confirm-modal.component';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -20,7 +19,7 @@ export class CoursePageComponent implements OnInit, OnChanges {
   addIcon = faPlus;
 
 
-  constructor(private courseService: CourseService, public dialog: MatDialog, public ref: ChangeDetectorRef) {
+  constructor(private courseService: CourseService, public dialog: MatDialog) {
     console.log('Running: constructor()');
   }
 
@@ -30,10 +29,7 @@ export class CoursePageComponent implements OnInit, OnChanges {
   }
 
   getCourses() {
-    this.courseService.courses.subscribe((data: Course[]) => {
-      this.courses = data;
-      console.log(this.courses);
-    });
+    this.courses = this.courseService.courses;
   }
 
   deleteCourse(event) {
@@ -41,11 +37,7 @@ export class CoursePageComponent implements OnInit, OnChanges {
     const dialogRef = this.dialog.open(ConfirmModalComponent);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        //console.log(event.id);
-        this.courseService.removeCourse(event.id);
-        this.courseService.cast.subscribe(data => {
-          this.courses = data;
-        })
+        this.courses = this.courseService.removeCourse(event.id);
       }
     });
   }
