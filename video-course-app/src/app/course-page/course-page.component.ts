@@ -42,11 +42,9 @@ export class CoursePageComponent implements OnInit, OnChanges {
     });
   }
 
-  public trackByFunc(index, course) {
-    if (!course) {
-      return null;
-    }
-    return course.id;
+  identify(index, item) {
+    console.log(item);
+    return item;
   }
 
   onLoadMore() {
