@@ -2,12 +2,12 @@
   <div class="logo-container">
     <vc-logo></vc-logo>
   </div>
-  <div *ngIf="!authService.IsAuthenticated()" class="auth">
-    <button class="log-btn" routerLink="/login" routerLinkActive="active">
+  <div class="auth">
+    <button *ngIf="!authService.IsAuthenticated()" class="log-btn" routerLink="/login" routerLinkActive="active">
       <img src="../../assets/ic-user.svg" />
       <span>User login</span>
     </button>
-    <button class="log-btn" routerLink="/" routerLinkActive="active">
+    <button *ngIf="authService.IsAuthenticated()" (click)="LogoutClickHandler()" class="log-btn" routerLink="/login" routerLinkActive="active">
       <img src="../../assets/ic-exit.svg" />
       <span>Log off</span>
     </button>

@@ -15,9 +15,9 @@ import { Observable } from 'rxjs';
 })
 export class CoursePageComponent implements OnInit, OnChanges {
 
-  private searchInput: string;
+  searchInput: string;
   courses: Course[];
-  private addIcon = faPlus;
+  addIcon = faPlus;
 
 
   constructor(private courseService: CourseService, public dialog: MatDialog, public ref: ChangeDetectorRef) {
@@ -32,7 +32,7 @@ export class CoursePageComponent implements OnInit, OnChanges {
   getCourses() {
     this.courseService.courses.subscribe((data: Course[]) => {
       this.courses = data;
-      console.log(this.courses)
+      console.log(this.courses);
     });
   }
 

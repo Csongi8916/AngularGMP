@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from '../interfaces/User';
 
 @Injectable({
   providedIn: 'root'
@@ -6,31 +7,42 @@ import { Injectable } from '@angular/core';
 export class AuthServiceService {
 
   private isAuth: boolean;
+  private loggedUsers: User[];
 
   constructor() {
     this.isAuth = false;
+    this.loggedUsers = [];
   }
 
   Login(email: string, password: string): void {
-    console.log('LOGIN');
+    console.log('Logged in successfully');
     localStorage.setItem('email', email);
     localStorage.setItem('token', 'fake token');
+    const user: User = {email: email, password: password, isAuthenticated: true};
+    this.loggedUsers.push(user);
     this.isAuth = true;
   }
 
-  Logout(email: string, password: string): void {
+  Logout(): void {
+    const email: string = localStorage.getItem('email');
     localStorage.removeItem('email');
     localStorage.removeItem('token');
-    console.log('You Logout')
+    this.isAuth = false;
+    const index: number = this.loggedUsers.findIndex(x => x.email === email);
+    console.log('Logged out successfully');
+
+    if (index > -1) {
+      this.loggedUsers.splice(index, 1);
+   }
   }
 
   IsAuthenticated(): boolean {
-    console.log('AUTH: ' + this.isAuth);
     return this.isAuth;
   }
 
-  GetUserInfo(): void {
-
+  GetUserInfo(email: string): User {
+    const user: User = this.loggedUsers.find(x => x.email === email);
+    return user;
   }
 
 }

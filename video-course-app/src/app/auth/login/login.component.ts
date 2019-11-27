@@ -1,9 +1,8 @@
-import { Input, Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgForm } from '@angular/forms';
-import { MatCardModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../services/auth-service.service';
+import { Router } from '@angular/router';
+import { User } from '../interfaces/User';
+
 
 @Component({
   selector: 'app-login',
@@ -15,13 +14,17 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor(private authService: AuthServiceService) { }
+  constructor(private authService: AuthServiceService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  LoginClickHandler() {
-    console.log(this.email, this.password);
-    this.authService.Login(this.email, this.password);
+  LoginClickHandler(email: string, password: string) {
+    this.email = email;
+    this.password = password;
+    this.authService.Login(email, password);
+    const user: User = this.authService.GetUserInfo(email);
+    console.log('GetUserInfo: ', user.email, user.password, user.isAuthenticated);
+    this.router.navigate(['/']);
   }
 }
