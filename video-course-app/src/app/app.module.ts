@@ -10,10 +10,10 @@ import { LogoComponent } from './header/logo/logo.component';
 import { FormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FreshCourseDirective } from './fresh-course.directive';
+import { FreshCourseDirective } from './course/directives/fresh-course.directive';
 import { DurationPipe } from './duration.pipe';
-import { FilterPipe } from './shared/pipes/filter/filter.pipe';
-import { OrderbyPipe } from './shared/pipes/orderby/orderby.pipe';
+import { FilterPipe } from './course/pipes/filter/filter.pipe';
+import { OrderbyPipe } from './course/pipes/orderby/orderby.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmModalComponent } from './shared/UI/confirm-modal/confirm-modal.component';
 import { LoginComponent } from './auth/login/login.component';

@@ -8,9 +8,9 @@ import { CourseBreadcrumbComponent } from '../course/course-breadcrumb/course-br
 import { CoursePageComponent } from '../course/course-page/course-page.component';
 import { CourseComponent } from '../course/course-page/course/course.component';
 
-import { FilterPipe } from '../shared/pipes/filter/filter.pipe';
-import { OrderbyPipe } from '../shared/pipes/orderby/orderby.pipe';
-import { FreshCourseDirective } from '../fresh-course.directive';
+import { FilterPipe } from './pipes/filter/filter.pipe';
+import { OrderbyPipe } from './pipes/orderby/orderby.pipe';
+import { FreshCourseDirective } from './directives/fresh-course.directive';
 import { DurationPipe } from '../duration.pipe';
 
 
