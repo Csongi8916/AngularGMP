@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faClock, faCalendar, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Course } from '../../../Entities/Interfaces';
+import { Course } from '../../../../Entities/Interfaces';
 
 @Component({
   selector: 'course',

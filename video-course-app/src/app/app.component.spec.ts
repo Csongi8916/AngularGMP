@@ -7,9 +7,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoComponent } from './header/logo/logo.component';
-import { CourseBreadcrumbComponent } from './course-breadcrumb/course-breadcrumb.component';
-import { CoursePageComponent } from './course-page/course-page.component';
-import { CourseComponent } from './course-page/course/course.component';
+import { CourseBreadcrumbComponent } from './course/course-breadcrumb/course-breadcrumb.component';
+import { CoursePageComponent } from './course/course-page/course-page.component';
+import { CourseComponent } from './course/course-page/course/course.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {

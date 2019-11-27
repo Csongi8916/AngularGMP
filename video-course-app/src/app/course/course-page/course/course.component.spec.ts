@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CourseComponent } from './course.component';
-import { Course } from '../../../Entities/Interfaces';
+import { Course } from '../../../../Entities/Interfaces';
 import { FormsModule } from '@angular/forms';
 
 @Component({

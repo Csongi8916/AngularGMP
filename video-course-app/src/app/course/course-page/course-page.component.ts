@@ -1,10 +1,10 @@
 import { Component, OnInit, NgZone, ViewContainerRef, ChangeDetectorRef, OnChanges } from '@angular/core';
 
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { Course } from '../../Entities/Interfaces';
+import { Course } from '../../../Entities/Interfaces';
 import { CourseService } from '../services/course.service';
 import { MatDialog } from '@angular/material';
-import { ConfirmModalComponent } from '../shared/UI/confirm-modal/confirm-modal.component';
+import { ConfirmModalComponent } from '../../shared/UI/confirm-modal/confirm-modal.component';
 
 
 @Component({

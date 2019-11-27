@@ -7,9 +7,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoComponent } from './header/logo/logo.component';
-import { CourseBreadcrumbComponent } from './course-breadcrumb/course-breadcrumb.component';
-import { CoursePageComponent } from './course-page/course-page.component';
-import { CourseComponent } from './course-page/course/course.component';
 import { FormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -20,6 +17,7 @@ import { OrderbyPipe } from './shared/pipes/orderby/orderby.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmModalComponent } from './shared/UI/confirm-modal/confirm-modal.component';
 import { LoginComponent } from './auth/login/login.component';
+import { CourseModule } from './course/course.module';
 
 
 @NgModule({
@@ -28,17 +26,11 @@ import { LoginComponent } from './auth/login/login.component';
     HeaderComponent,
     FooterComponent,
     LogoComponent,
-    CourseBreadcrumbComponent,
-    CoursePageComponent,
-    CourseComponent,
-    FreshCourseDirective,
-    DurationPipe,
-    FilterPipe,
-    OrderbyPipe,
     ConfirmModalComponent,
     LoginComponent,
   ],
   imports: [
+    CourseModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
-import { CoursePageComponent } from './course-page/course-page.component';
+import { CoursePageComponent } from './course/course-page/course-page.component';
 
 
 const routes: Routes = [
