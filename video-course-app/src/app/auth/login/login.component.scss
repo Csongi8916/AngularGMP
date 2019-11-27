@@ -4,15 +4,12 @@
   align-items: center;
   min-height: 70vh;
 
-  .row {
+  .control-field {
     display: flex;
 
-    .center {
-      justify-content: center;
-    }
-
-    .end {
-      justify-content: flex-end;
+    .link {
+      margin-top: 18px;
+      flex-grow: 1;
     }
   }
 
@@ -25,15 +22,24 @@
   }
 
   .mat-form-field {
+    .field-info {
+      display: flex;
+      .field-title {
+        flex-grow: 1;
+      }
+    }
+    
     input {
       width: 100%;
+      height: 34px;
+      padding: 5px;
     }
   }
 
   .button {
     display: flex;
     justify-content: flex-end;
-    background-color: rgb(56, 58, 56);
+    background-color: #33BEFF;
     color: white;
     padding: 5px 10px;
     text-align: center;

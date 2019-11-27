@@ -1,18 +1,24 @@
 <div class="login-form">
-  <div class='mat-card'>
+  <div class="mat-card">
     <h2>Login</h2>
     <div class='mat-card-content'>
       <div class='mat-form-field'>
+        <div class="flex-info">
+
+        </div>
         <p>E-mail:</p>
-        <input type="text" #email />
+        <input type="text" #email placeholder="Enter E-mail" />
       </div>
 
       <div class='mat-form-field'>
-        <p>Password:</p>
-        <input type="password" #password />
+        <div class="flex-info">
+          <p class="field-title">Password:</p>
+        </div>
+        <input type="password" #password placeholder="Enter Password" />
       </div>
 
-      <div class="row end">
+      <div class="control-field">
+        <a class="link" href="#">Forgot password</a>
         <button type="submit" class="button" (click)="LoginClickHandler(email.value, password.value)">Login</button>
       </div>
     </div>

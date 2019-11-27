@@ -18,7 +18,7 @@ export class AuthServiceService {
     console.log('Logged in successfully');
     localStorage.setItem('email', email);
     localStorage.setItem('token', 'fake token');
-    const user: User = {email: email, password: password, isAuthenticated: true};
+    const user: User = { email: email, password: password, isAuthenticated: true };
     this.loggedUsers.push(user);
     this.isAuth = true;
   }
@@ -33,7 +33,7 @@ export class AuthServiceService {
 
     if (index > -1) {
       this.loggedUsers.splice(index, 1);
-   }
+    }
   }
 
   IsAuthenticated(): boolean {
