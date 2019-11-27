@@ -43,7 +43,6 @@ export class CoursePageComponent implements OnInit, OnChanges {
   }
 
   identify(index, item) {
-    console.log(item);
     return item;
   }
 
