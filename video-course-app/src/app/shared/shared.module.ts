@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ConfirmModalComponent } from '../shared/UI/confirm-modal/confirm-modal.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 
 @NgModule({
