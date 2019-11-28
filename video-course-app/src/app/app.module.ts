@@ -10,9 +10,9 @@ import { FormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './core/auth/login/login.component';
 import { CourseModule } from './course/course.module';
 import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
@@ -21,10 +21,10 @@ import { SharedModule } from './shared/shared.module';
     HeaderComponent,
     FooterComponent,
     LogoComponent,
-    LoginComponent,
   ],
   imports: [
     CourseModule,
+    CoreModule,
     SharedModule,
     BrowserModule,
     AppRoutingModule,
