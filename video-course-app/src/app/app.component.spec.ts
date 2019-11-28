@@ -4,9 +4,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { LogoComponent } from './header/logo/logo.component';
+import { HeaderComponent } from './core/header/header.component';
+import { FooterComponent } from './core/footer/footer.component';
+import { LogoComponent } from './core/header/logo/logo.component';
 import { CourseBreadcrumbComponent } from './course/course-breadcrumb/course-breadcrumb.component';
 import { CoursePageComponent } from './course/course-page/course-page.component';
 import { CourseComponent } from './course/course-page/course/course.component';

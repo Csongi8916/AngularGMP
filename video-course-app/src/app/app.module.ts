@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { LogoComponent } from './header/logo/logo.component';
+import { HeaderComponent } from './core/header/header.component';
+import { FooterComponent } from './core/footer/footer.component';
+import { LogoComponent } from './core/header/logo/logo.component';
 import { FormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -18,13 +18,10 @@ import { CoreModule } from './core/core.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    LogoComponent,
   ],
   imports: [
-    CourseModule,
     CoreModule,
+    CourseModule,
     SharedModule,
     BrowserModule,
     AppRoutingModule,
