@@ -1,11 +1,10 @@
 import { Component, OnInit, NgZone, ViewContainerRef, ChangeDetectorRef, OnChanges } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Course } from '../../../Entities/Interfaces';
 import { CourseService } from '../services/course.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmModalComponent } from '../../shared/components/confirm-modal/confirm-modal.component';
-
 
 @Component({
   selector: 'vc-course-page',
@@ -18,8 +17,7 @@ export class CoursePageComponent implements OnInit, OnChanges {
   courses: Course[];
   addIcon = faPlus;
 
-
-  constructor(private courseService: CourseService, public dialog: MatDialog) {
+  constructor(private courseService: CourseService, public dialog: MatDialog, private router: Router) {
     console.log('Running: constructor()');
   }
 
@@ -28,8 +26,12 @@ export class CoursePageComponent implements OnInit, OnChanges {
     console.log('Running: ngOnInit()');
   }
 
+  addCourse() {
+    this.router.navigate(['/add-course']);
+  }
+
   getCourses() {
-    this.courses = this.courseService.courses;
+    this.courses = this.courseService.getCourses();
   }
 
   deleteCourse(event) {
@@ -55,11 +57,11 @@ export class CoursePageComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log('OnChanges')
+    console.log('OnChanges');
     this.getCourses();
   }
 
-  //other hooks:
+  // other hooks:
 
   /*ngOnChanges() {
     console.log('Running: ngOnChanges()');

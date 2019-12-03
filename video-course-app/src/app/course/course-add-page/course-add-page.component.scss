@@ -1,6 +1,17 @@
 .wrapper-course-add {
-  max-width: 800px;
-  margin: auto;
+  display: flex;
+
+  .form-course-add {
+    max-width: 800px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+  }
+
+  .duration-text {
+    margin-left: 30px;
+  }
 
   textarea,
   .input-text,
@@ -42,13 +53,6 @@
   .cancel-btn {
     background-color: #ff3333;
   }
-
-
-
-
-
-
-
 
 }
 
