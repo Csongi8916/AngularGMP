@@ -4,12 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './core/auth/login/login.component';
 import { CoursePageComponent } from './course/course-page/course-page.component';
+import { CourseAddPageComponent } from './course/course-add-page/course-add-page.component';
 
 
 const routes: Routes = [
   { path: '', component: CoursePageComponent },
   { path: 'login', component: LoginComponent },
-
+  { path: 'add-course', component: CourseAddPageComponent },
 ];
 
 @NgModule({
@@ -19,4 +20,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-//export const routingComponents = [AppComponent, LoginComponent];

@@ -1,11 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { faClock, faCalendar, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Course } from '../../../../Entities/Interfaces';
 
 @Component({
   selector: 'course',
   templateUrl: './course.component.html',
-  styleUrls: ['./course.component.scss']
+  styleUrls: ['./course.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CourseComponent implements OnInit {
 
@@ -23,8 +24,8 @@ export class CourseComponent implements OnInit {
     this.calendarIcon = faCalendar;
     this.editIcon = faPencilAlt;
     this.removeIcon = faTrash;
-    this.testStr = "test";
-    this.starCharacter = "&#9733;";
+    this.testStr = 'test';
+    this.starCharacter = '&#9733;';
   }
 
   onDeleteCourse() {

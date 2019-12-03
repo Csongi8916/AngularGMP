@@ -1,4 +1,4 @@
-import { Directive, Renderer2, ElementRef, Input } from '@angular/core';
+import { Directive, Renderer2, ElementRef, Input, OnChanges } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Course } from 'src/Entities/Interfaces';
 import { stringify } from 'querystring';
@@ -7,7 +7,7 @@ import { stringify } from 'querystring';
 @Directive({
   selector: '[appFreshCourseDirective]'
 })
-export class FreshCourseDirective {
+export class FreshCourseDirective implements OnChanges {
 
   @Input() course: Course;
 
@@ -26,11 +26,9 @@ export class FreshCourseDirective {
 
     if (creationDate < now && creationDate >= limitFreshDate) {
       return 'rgb(60,179,113)';
-    }
-    else if (creationDate > now) {
+    } else if (creationDate > now) {
       return '#33CEFF';
-    }
-    else {
+    } else {
       return '#fff';
     }
   }

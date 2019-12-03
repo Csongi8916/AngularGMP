@@ -1,0 +1,55 @@
+.wrapper-course-add {
+  max-width: 800px;
+  margin: auto;
+
+  textarea,
+  .input-text,
+  .input-date,
+  .input-duration {
+    border-radius: 3px;
+    border: solid 1px #d9dbe3;
+    background-color: #ffffff;
+    font-size: 16px;
+  }
+
+  .input-text, .input-date, .input-duration {
+    height: 38px;
+  }
+
+  .input-text, textarea {
+    width: 100%;
+  }
+
+  .input-date, .input-duration {
+    height: 38px;
+    width: 30%;
+  }
+
+  .btn {
+    height: 36px;
+    border-radius: 3px;
+    margin-top: 30px;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+    color: #ffffff;
+  }
+
+  .save-btn {
+    background-color: #33BEFF;
+  }
+  .cancel-btn {
+    background-color: #ff3333;
+  }
+
+
+
+
+
+
+
+
+}
+
+

@@ -1,0 +1,23 @@
+<div class="wrapper-course-add">
+
+  <div>
+    <p>Title: </p>
+    <input class="input-text" type="text" />
+    <p>Description: </p>
+    <textarea rows="4" cols="50"></textarea>
+    <p>Date: </p>
+    <input class="input-date" type="text" />
+    <p>Duration: </p>
+    <input class="input-duration" type="text" />
+  </div>
+
+  <div>
+    <button (click)="onSaveCourse()" class="btn save-btn">
+      Save
+    </button>
+    <button (click)="onCancelCourse()" class="btn cancel-btn">
+      Cancel
+    </button>
+  </div>
+
+</div>
