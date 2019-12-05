@@ -27,7 +27,7 @@ export class CoursePageComponent implements OnInit, OnChanges {
   }
 
   addCourse() {
-    this.router.navigate(['/add-course']);
+    this.router.navigate(['/courses/new']);
   }
 
   getCourses() {

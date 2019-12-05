@@ -15,12 +15,14 @@ export class AuthServiceService {
   }
 
   Login(email: string, password: string): void {
-    console.log('Logged in successfully');
-    localStorage.setItem('email', email);
-    localStorage.setItem('token', 'fake token');
-    const user: User = { email: email, password: password, isAuthenticated: true };
-    this.loggedUsers.push(user);
-    this.isAuth = true;
+    if (email && password) {
+      console.log('Logged in successfully');
+      localStorage.setItem('email', email);
+      localStorage.setItem('token', 'fake token');
+      const user: User = { email: email, password: password, isAuthenticated: true };
+      this.loggedUsers.push(user);
+      this.isAuth = true;
+    }
   }
 
   Logout(): void {

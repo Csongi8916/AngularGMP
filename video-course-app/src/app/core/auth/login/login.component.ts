@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
     this.authService.Login(email, password);
     const user: User = this.authService.GetUserInfo(email);
     console.log('GetUserInfo: ', user.email, user.password, user.isAuthenticated);
-    this.router.navigate(['/']);
+    if (user.isAuthenticated) {
+      this.router.navigate(['/']);
+    }
   }
 }

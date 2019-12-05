@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 import { faClock, faCalendar, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Course } from '../../../../Entities/Interfaces';
+
 
 @Component({
   selector: 'course',
@@ -14,7 +16,7 @@ export class CourseComponent implements OnInit {
 
   @Input() course: Course;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   @Output()
   delete: EventEmitter<Course> = new EventEmitter<Course>();
@@ -34,5 +36,6 @@ export class CourseComponent implements OnInit {
 
   onEditCourse() {
     console.log('onEditCourse', this.course);
+    this.router.navigate(['/courses/' + this.course.id], { state: { mode: 'edit' } });
   }
 }

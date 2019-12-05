@@ -1,4 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { Course } from 'src/Entities/Interfaces';
 
 @Component({
@@ -8,10 +10,11 @@ import { Course } from 'src/Entities/Interfaces';
 })
 export class CourseAddPageComponent implements OnInit, OnChanges {
 
+  mode: string;
   course: Course;
   durationInput: number;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.course = {
@@ -22,6 +25,8 @@ export class CourseAddPageComponent implements OnInit, OnChanges {
       description: '',
       topRated: false,
     };
+    // this.mode = history.state.mode;
+    this.mode = this.router.url; // TODO WORK HERE!!!!
   }
 
   ngOnChanges() {
