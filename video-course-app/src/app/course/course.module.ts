@@ -24,7 +24,10 @@ import { CourseAddPageComponent } from './course-add-page/course-add-page.compon
     OrderbyPipe,
     FreshCourseDirective,
     DurationPipe,
-    CourseAddPageComponent
+    CourseAddPageComponent,
+  ],
+  exports: [
+    CourseBreadcrumbComponent
   ],
   imports: [
     CommonModule,

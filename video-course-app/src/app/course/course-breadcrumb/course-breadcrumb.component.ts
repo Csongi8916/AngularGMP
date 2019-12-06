@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'vc-course-breadcrumb',
@@ -9,7 +10,7 @@ export class CourseBreadcrumbComponent implements OnInit {
 
   coursesBreadCrumb: string;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
     this.coursesBreadCrumb = 'Courses';

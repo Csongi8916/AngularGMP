@@ -8,16 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HeaderComponent } from '../core/header/header.component';
 import { FooterComponent } from '../core/footer/footer.component';
-import { LoginComponent } from '../core/auth/login/login.component';
 import { LogoComponent } from '../core/header/logo/logo.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    LoginComponent,
     LogoComponent,
     NotFoundComponent
   ],
@@ -26,6 +25,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FooterComponent
   ],
   imports: [
+    AuthModule,
     CommonModule,
     FontAwesomeModule,
     BrowserModule,
