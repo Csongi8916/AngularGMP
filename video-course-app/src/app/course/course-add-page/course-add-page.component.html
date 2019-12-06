@@ -1,13 +1,14 @@
 <div class="wrapper-course-add">
   <div class="form-course-add">
-    <p>Mode: {{ mode }}</p>
     <div>
       <p>Title: </p>
-      <input class="input-text" type="text" />
+      <input [(ngModel)]="course.title" class="input-text" type="text" />
       <p>Description: </p>
-      <textarea rows="4" cols="50">{{ course.description }}</textarea>
+      <textarea [(ngModel)]="course.description" rows="4" cols="50">
+        {{ course.description }}
+      </textarea>
       <p>Date: </p>
-      <input class="input-date" type="text" />
+      <input [(ngModel)]="course.creationDate" class="input-date" type="text" />
       <p>Duration: </p>
       <input [(ngModel)]="course.duration" (ngModelChange)="onChange($event)" class="input-duration" type="number" />
       <span class="duration-text">{{ course.duration | duration }}</span>

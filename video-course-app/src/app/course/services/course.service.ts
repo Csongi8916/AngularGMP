@@ -42,6 +42,18 @@ export class CourseService {
       ];
   }
 
+  // Will be removed, when I will use real api
+  getNewId(): number {
+    let max = 0;
+    this.courses.forEach(c => {
+      if (c.id > max) {
+        max = c.id;
+      }
+    });
+
+    return ++max;
+  }
+
   getCourses(): Course[] {
     return this.courses;
   }
@@ -62,7 +74,7 @@ export class CourseService {
   }
 
   updateCourse(course: Course): void {
-    let originalCourse: Course = this.courses.find(c => c.id === c.id);
+    let originalCourse: Course = this.courses.find(c => c.id === course.id);
     originalCourse = course;
   }
 

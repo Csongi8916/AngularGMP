@@ -1,7 +1,8 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Course } from 'src/Entities/Interfaces';
+import { CourseService } from '../services/course.service';
 
 @Component({
   selector: 'app-course-add-page',
@@ -14,7 +15,7 @@ export class CourseAddPageComponent implements OnInit, OnChanges {
   course: Course;
   durationInput: number;
 
-  constructor(private router: Router) { }
+  constructor(private courseService: CourseService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.course = {
@@ -26,7 +27,14 @@ export class CourseAddPageComponent implements OnInit, OnChanges {
       topRated: false,
     };
     // this.mode = history.state.mode;
-    this.mode = this.router.url; // TODO WORK HERE!!!!
+    // this.mode = this.router.url;
+    this.route.paramMap.subscribe(params => {
+      const id: string = params.get('id');
+      this.mode = Number(params.get('id')) ? 'edit' : 'create';
+      if (this.mode === 'edit') {
+        this.course = this.courseService.getCourse(+id);
+      }
+    });
   }
 
   ngOnChanges() {
@@ -40,11 +48,18 @@ export class CourseAddPageComponent implements OnInit, OnChanges {
   }
 
   onSaveCourse() {
-    console.log('Course saved!');
+    if (this.mode === 'create') {
+      this.course.id = this.courseService.getNewId();
+      this.courseService.createCourse(this.course);
+    } else {
+      this.courseService.updateCourse(this.course);
+    }
+
+    this.router.navigate(['/courses']);
   }
 
   onCancelCourse() {
-    console.log('Course canceled!');
+    this.router.navigate(['/courses']);
   }
 
 }

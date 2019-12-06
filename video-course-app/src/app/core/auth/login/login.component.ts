@@ -5,7 +5,7 @@ import { User } from '../model/User';
 
 
 @Component({
-  selector: 'app-login',
+  selector: 'vc-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
