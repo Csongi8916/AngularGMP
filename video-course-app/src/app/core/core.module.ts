@@ -11,6 +11,7 @@ import { FooterComponent } from '../core/footer/footer.component';
 import { LogoComponent } from '../core/header/logo/logo.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthModule } from './auth/auth.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { AuthModule } from './auth/auth.module';
     CommonModule,
     FontAwesomeModule,
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
