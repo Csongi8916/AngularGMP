@@ -99,7 +99,10 @@ export class CourseService {
 
   updateCourse(course: Course): void {
     let originalCourse: Course = this.courses.find(c => c.id === course.id);
-    originalCourse = course;
+    originalCourse.title = course.title;
+    originalCourse.description = course.description;
+    originalCourse.creationDate = new Date(course.creationDate);
+    originalCourse.duration = course.duration;
   }
 
   removeCourse(id: number): Course[] {
