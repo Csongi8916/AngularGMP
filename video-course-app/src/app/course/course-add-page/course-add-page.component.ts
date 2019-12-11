@@ -26,8 +26,7 @@ export class CourseAddPageComponent implements OnInit, OnChanges {
       description: '',
       topRated: false,
     };
-    // this.mode = history.state.mode;
-    // this.mode = this.router.url;
+
     this.route.paramMap.subscribe(params => {
       const id: string = params.get('id');
       this.mode = Number(params.get('id')) ? 'edit' : 'create';

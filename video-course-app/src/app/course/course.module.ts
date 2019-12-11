@@ -13,6 +13,7 @@ import { OrderbyPipe } from './pipes/orderby/orderby.pipe';
 import { FreshCourseDirective } from './directives/fresh-course.directive';
 import { DurationPipe } from '../duration.pipe';
 import { CourseAddPageComponent } from './course-add-page/course-add-page.component';
+import { CourseEditPageComponent } from './pages/course-edit-page/course-edit-page.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { CourseAddPageComponent } from './course-add-page/course-add-page.compon
     FreshCourseDirective,
     DurationPipe,
     CourseAddPageComponent,
+    CourseEditPageComponent,
   ],
   exports: [
     CourseBreadcrumbComponent
