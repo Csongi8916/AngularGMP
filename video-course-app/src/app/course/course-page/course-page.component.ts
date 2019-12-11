@@ -23,6 +23,7 @@ export class CoursePageComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.getCourses();
+    //this.courseService.pushBreadcrumb('Courses', this.router.url);
     console.log('Running: ngOnInit()');
   }
 
@@ -32,6 +33,12 @@ export class CoursePageComponent implements OnInit, OnChanges {
 
   getCourses() {
     this.courses = this.courseService.getCourses();
+  }
+
+  editCourse(event) {
+    console.log('breadcrumb addition', event);
+    const url = '/courses/' + event.id;
+    this.courseService.pushBreadcrumb(event.title, url);
   }
 
   deleteCourse(event) {

@@ -14,6 +14,7 @@ import { FreshCourseDirective } from './directives/fresh-course.directive';
 import { DurationPipe } from '../duration.pipe';
 import { CourseAddPageComponent } from './course-add-page/course-add-page.component';
 import { CourseEditPageComponent } from './pages/course-edit-page/course-edit-page.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { CourseEditPageComponent } from './pages/course-edit-page/course-edit-pa
   imports: [
     CommonModule,
     BrowserModule,
+    RouterModule,
     FormsModule,
     FontAwesomeModule,
   ],

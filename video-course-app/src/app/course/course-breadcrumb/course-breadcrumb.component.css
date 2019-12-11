@@ -17,3 +17,7 @@
   letter-spacing: normal;
   color: #2c2f3c;
 }
+
+.breadcrumb-text {
+  cursor: pointer;
+}

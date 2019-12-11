@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
 import { Router } from '@angular/router';
 import { faClock, faCalendar, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Course } from '../../../../Entities/Interfaces';
+import { CourseService } from '../../services/course.service';
 
 
 @Component({
@@ -16,10 +17,10 @@ export class CourseComponent implements OnInit {
 
   @Input() course: Course;
 
-  constructor(private router: Router) { }
+  constructor(private courseService: CourseService, private router: Router) { }
 
-  @Output()
-  delete: EventEmitter<Course> = new EventEmitter<Course>();
+  @Output() delete: EventEmitter<Course> = new EventEmitter<Course>();
+  @Output() edit: EventEmitter<Course> = new EventEmitter<Course>();
 
   ngOnInit() {
     this.clockIcon = faClock;
@@ -35,7 +36,7 @@ export class CourseComponent implements OnInit {
   }
 
   onEditCourse() {
-    console.log('onEditCourse', this.course);
-    this.router.navigate(['/courses/' + this.course.id], { state: { mode: 'edit' } });
+    this.edit.emit(this.course);
+    this.router.navigate(['/courses/' + this.course.id]);
   }
 }

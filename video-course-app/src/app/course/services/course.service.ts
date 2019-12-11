@@ -7,6 +7,7 @@ import { Course } from 'src/Entities/Interfaces';
 export class CourseService {
 
   private courses: Course[];
+  private breadcrumbStack: object[];
 
   constructor() {
     this.init();
@@ -40,6 +41,7 @@ export class CourseService {
           description: "Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or college's classes.They're published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.",
         },
       ];
+    this.breadcrumbStack = [];
   }
 
   // Will be removed, when I will use real api
@@ -52,6 +54,28 @@ export class CourseService {
     });
 
     return ++max;
+  }
+
+  pushBreadcrumb(name: string, url: string): void {
+    this.breadcrumbStack.push({ breadcurmbName: name, breadcurmbUrl: url });
+  }
+
+  refreshBreadcrumb() {
+    this.breadcrumbStack.pop();
+  }
+
+  getBreadcrumbSize() {
+    return this.breadcrumbStack.length;
+  }
+
+  getBreadcrumb(sender: string): object[] {
+    if (sender === 'Courses') {
+      return this.breadcrumbStack;
+    } else if (sender === 'Course') {
+      return this.breadcrumbStack;
+    } else if (sender === 'New Course') {
+      return this.breadcrumbStack;
+    }
   }
 
   getCourses(): Course[] {

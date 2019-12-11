@@ -10,9 +10,9 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/courses', pathMatch: 'full' },
-  { path: 'courses', component: CoursePageComponent },
-  { path: 'courses/:id', component: CourseAddPageComponent },
-  { path: 'courses/new', component: CourseAddPageComponent },
+  { path: 'courses', component: CoursePageComponent, data: { breadcrumb: 'Courses' } },
+  { path: 'courses/:id', component: CourseAddPageComponent, data: { breadcrumb: 'Course' } },
+  { path: 'courses/new', component: CourseAddPageComponent, data: { breadcrumb: 'New Course' } },
   { path: 'login', component: LoginComponent },
   { path: '**', component: NotFoundComponent }
 ];
