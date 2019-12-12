@@ -12,9 +12,10 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
 import { OrderbyPipe } from './pipes/orderby/orderby.pipe';
 import { FreshCourseDirective } from './directives/fresh-course.directive';
 import { DurationPipe } from '../duration.pipe';
-import { CourseAddPageComponent } from './course-add-page/course-add-page.component';
+import { CourseAddPageComponent } from './pages/course-add-page/course-add-page.component';
 import { CourseEditPageComponent } from './pages/course-edit-page/course-edit-page.component';
 import { RouterModule } from '@angular/router';
+import { CourseEditorComponent } from './course-editor/course-editor.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { RouterModule } from '@angular/router';
     CourseBreadcrumbComponent,
     CoursePageComponent,
     CourseComponent,
+    CourseEditorComponent,
     FilterPipe,
     OrderbyPipe,
     FreshCourseDirective,
@@ -30,7 +32,7 @@ import { RouterModule } from '@angular/router';
     CourseEditPageComponent,
   ],
   exports: [
-    CourseBreadcrumbComponent
+    CourseBreadcrumbComponent,
   ],
   imports: [
     CommonModule,

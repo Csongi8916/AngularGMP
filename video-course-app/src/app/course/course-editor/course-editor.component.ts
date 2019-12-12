@@ -1,16 +1,14 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
 import { Course } from 'src/Entities/Interfaces';
 import { CourseService } from '../services/course.service';
-import { CourseBreadcrumbComponent } from '../course-breadcrumb/course-breadcrumb.component';
 
 @Component({
-  selector: 'app-course-add-page',
-  templateUrl: './course-add-page.component.html',
-  styleUrls: ['./course-add-page.component.scss']
+  selector: 'vc-course-editor',
+  templateUrl: './course-editor.component.html',
+  styleUrls: ['./course-editor.component.scss']
 })
-export class CourseAddPageComponent implements OnInit, OnChanges {
+export class CourseEditorComponent implements OnInit, OnChanges {
 
   mode: string;
   course: Course;
@@ -32,8 +30,7 @@ export class CourseAddPageComponent implements OnInit, OnChanges {
           description: '',
           topRated: false,
         };
-      }
-      else if (this.mode === 'edit') {
+      } else if (this.mode === 'edit') {
         this.course = { ...this.courseService.getCourse(+id) };
       }
     });
@@ -61,7 +58,7 @@ export class CourseAddPageComponent implements OnInit, OnChanges {
   }
 
   onCancelCourse() {
-    //this.course = { ...this.originalCourse };
+    // this.course = { ...this.originalCourse };
     this.router.navigate(['/courses']);
   }
 
