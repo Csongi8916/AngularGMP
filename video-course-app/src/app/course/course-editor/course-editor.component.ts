@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Course } from 'src/Entities/Interfaces';
 import { CourseService } from '../services/course.service';
@@ -8,16 +8,24 @@ import { CourseService } from '../services/course.service';
   templateUrl: './course-editor.component.html',
   styleUrls: ['./course-editor.component.scss']
 })
-export class CourseEditorComponent implements OnInit, OnChanges {
+export class CourseEditorComponent implements OnInit {
 
-  mode: string;
-  course: Course;
-  originalCourse: Course;
-  durationInput: number;
+  // mode: string;
+  @Input('course') course: Course;
+  // originalCourse: Course;
+  // durationInput: number;
 
-  constructor(private courseService: CourseService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  onChange(value) {
+    if (!value) {
+      this.course.duration = 0;
+    }
+  }
+
+  /*ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const id: string = params.get('id');
       this.mode = Number(params.get('id')) ? 'edit' : 'create';
@@ -60,6 +68,6 @@ export class CourseEditorComponent implements OnInit, OnChanges {
   onCancelCourse() {
     // this.course = { ...this.originalCourse };
     this.router.navigate(['/courses']);
-  }
+  }*/
 
 }
