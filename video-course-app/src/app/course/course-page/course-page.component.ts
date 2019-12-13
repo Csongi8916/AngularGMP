@@ -32,7 +32,9 @@ export class CoursePageComponent implements OnInit, OnChanges {
   }
 
   getCourses() {
-    this.courses = this.courseService.getCourses();
+    this.courseService.getCourses().then(result => {
+      this.courses = result;
+    });
   }
 
   editCourse(event) {

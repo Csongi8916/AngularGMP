@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Course } from 'src/Entities/Interfaces';
 
 @Injectable({
@@ -9,38 +10,8 @@ export class CourseService {
   private courses: Course[];
   private breadcrumbStack: object[];
 
-  constructor() {
-    this.init();
-  }
-
-  private init() {
-    this.courses =
-      [
-        {
-          id: 1,
-          title: 'Video Course 2. Name tag',
-          duration: 88,
-          creationDate: new Date('2019.11.19'),
-          topRated: true,
-          description: "Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or college's classes.They're published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.",
-        },
-        {
-          id: 2,
-          title: 'Video Course 3. Name tag',
-          duration: 210,
-          creationDate: new Date('2019.08.01'),
-          topRated: false,
-          description: "Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or college's classes.They're published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.",
-        },
-        {
-          id: 3,
-          title: 'Video Course 1. Name tag',
-          duration: 45,
-          creationDate: new Date('2019.12.20'),
-          topRated: false,
-          description: "Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or college's classes.They're published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.",
-        },
-      ];
+  constructor(private http: HttpClient) {
+    this.courses = [];
     this.breadcrumbStack = [];
   }
 
@@ -78,7 +49,12 @@ export class CourseService {
     }
   }
 
-  getCourses(): Course[] {
+  async getCourses(): Promise<Course[]> {
+    let res = await this.http.get('http://localhost:3004/courses').subscribe(result => {
+      this.courses = result as Course[];
+    });
+
+    debugger;
     return this.courses;
   }
 
