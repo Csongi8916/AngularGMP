@@ -31,13 +31,13 @@ export class CourseAddPageComponent implements OnInit {
     }
   }
 
-  onSaveCourse() {
+  saveCourse() {
     this.course.id = this.courseService.getNewId();
     this.courseService.createCourse(this.course);
     this.router.navigate(['/courses']);
   }
 
-  onCancelCourse() {
+  cancelCourse() {
     this.router.navigate(['/courses']);
   }
 

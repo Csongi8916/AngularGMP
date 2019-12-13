@@ -27,12 +27,12 @@ export class CourseEditPageComponent implements OnInit {
     }
   }
 
-  onSaveCourse() {
+  saveCourse() {
     this.courseService.updateCourse(this.course);
     this.router.navigate(['/courses']);
   }
 
-  onCancelCourse() {
+  cancelCourse() {
     this.router.navigate(['/courses']);
   }
 
