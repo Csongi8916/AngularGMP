@@ -17,7 +17,9 @@ export class CourseEditPageComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const id: string = params.get('id');
-      this.course = { ...this.courseService.getCourse(+id) };
+      this.courseService.getCourse(+id).subscribe(result => {
+        this.course = result as Course;
+      });
     });
   }
 

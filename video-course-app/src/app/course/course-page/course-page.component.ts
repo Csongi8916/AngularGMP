@@ -48,7 +48,10 @@ export class CoursePageComponent implements OnInit, OnChanges {
     const dialogRef = this.dialog.open(ConfirmModalComponent);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.courses = this.courseService.removeCourse(event.id);
+        this.courseService.removeCourse(event.id);
+        this.courseService.getCourses().subscribe(result => {
+          this.courses = result as Course[];
+        });
       }
     });
   }
