@@ -8,7 +8,7 @@ export class OrderbyPipe implements PipeTransform {
 
   transform(inputs: Course[]): Course[] {
     const orderedInputs = inputs.sort((a: Course, b: Course) => {
-      return b.creationDate.getTime() - a.creationDate.getTime();
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
 
     return orderedInputs;

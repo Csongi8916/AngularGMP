@@ -20,7 +20,7 @@ export class CourseEditorComponent implements OnInit {
 
   onChange(value) {
     if (!value) {
-      this.course.duration = 0;
+      this.course.length = 0;
     }
   }
 

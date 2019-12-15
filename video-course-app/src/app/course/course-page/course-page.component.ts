@@ -32,8 +32,8 @@ export class CoursePageComponent implements OnInit, OnChanges {
   }
 
   getCourses() {
-    this.courseService.getCourses().then(result => {
-      this.courses = result;
+    this.courseService.getCourses().subscribe(result => {
+      this.courses = result as Course[];
     });
   }
 

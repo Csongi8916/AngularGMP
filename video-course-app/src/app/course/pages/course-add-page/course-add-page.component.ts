@@ -17,9 +17,9 @@ export class CourseAddPageComponent implements OnInit {
   ngOnInit() {
     this.course = {
       id: 0,
-      title: '',
-      duration: 1,
-      creationDate: new Date(),
+      name: '',
+      length: 1,
+      date: new Date(),
       description: '',
       topRated: false,
     };
@@ -27,7 +27,7 @@ export class CourseAddPageComponent implements OnInit {
 
   onChange(value) {
     if (!value) {
-      this.course.duration = 0;
+      this.course.length = 0;
     }
   }
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Course } from 'src/Entities/Interfaces';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -49,13 +50,9 @@ export class CourseService {
     }
   }
 
-  async getCourses(): Promise<Course[]> {
-    let res = await this.http.get('http://localhost:3004/courses').subscribe(result => {
-      this.courses = result as Course[];
-    });
-
-    debugger;
-    return this.courses;
+   getCourses(): Observable<Course[]> {
+    let res = this.http.get<Course[]>('http://localhost:3004/courses');
+    return res;
   }
 
   getCourse(id: number): Course {
@@ -75,10 +72,10 @@ export class CourseService {
 
   updateCourse(course: Course): void {
     let originalCourse: Course = this.courses.find(c => c.id === course.id);
-    originalCourse.title = course.title;
+    originalCourse.name = course.name;
     originalCourse.description = course.description;
-    originalCourse.creationDate = new Date(course.creationDate);
-    originalCourse.duration = course.duration;
+    originalCourse.date = new Date(course.date);
+    originalCourse.length = course.length;
   }
 
   removeCourse(id: number): Course[] {

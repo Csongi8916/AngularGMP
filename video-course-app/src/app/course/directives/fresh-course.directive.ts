@@ -15,7 +15,7 @@ export class FreshCourseDirective implements OnChanges {
   }
 
   ngOnChanges() {
-    const courseDate: Date = new Date(this.course.creationDate);
+    const courseDate: Date = new Date(this.course.date);
     this.setStyleFreshCourse(courseDate);
   }
 

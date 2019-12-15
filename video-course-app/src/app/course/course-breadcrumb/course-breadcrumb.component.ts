@@ -31,7 +31,7 @@ export class CourseBreadcrumbComponent implements OnInit {
         this.route.paramMap.subscribe(params => {
           const id: string = params.get('id');
           const course: Course = this.courseService.getCourse(+id);
-          otherElement.title = course.title;
+          otherElement.title = course.name;
         });
       }
       this.breadcrumbStack.push(otherElement);

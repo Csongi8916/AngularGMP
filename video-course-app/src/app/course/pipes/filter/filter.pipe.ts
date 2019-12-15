@@ -9,7 +9,7 @@ export class FilterPipe implements PipeTransform {
   transform(inputs: Course[], key: string): Course[] {
     key = key ? key : '';
     const filteredInputs = inputs.filter(input => {
-      const inputLowerCase = input.title.toLowerCase();
+      const inputLowerCase = input.name.toLowerCase();
       return inputLowerCase.includes(key.toLowerCase());
     });
 

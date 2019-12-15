@@ -3,16 +3,16 @@
   <div class="form-course-add">
     <div>
       <p>Title: </p>
-      <input [(ngModel)]="course.title" class="input-text" type="text" />
+      <input [(ngModel)]="course.name" class="input-text" type="text" />
       <p>Description: </p>
       <textarea [(ngModel)]="course.description" rows="4" cols="50">
         {{ course.description }}
       </textarea>
       <p>Date: </p>
-      <input [(ngModel)]="course.creationDate" class="input-date" type="text" />
+      <input [(ngModel)]="course.date" class="input-date" type="text" />
       <p>Duration: </p>
-      <input [(ngModel)]="course.duration" (ngModelChange)="onChange($event)" class="input-duration" type="number" />
-      <span class="duration-text">{{ course.duration | duration }}</span>
+      <input [(ngModel)]="course.length" (ngModelChange)="onChange($event)" class="input-duration" type="number" />
+      <span class="duration-text">{{ course.length | duration }}</span>
     </div>
     <div>
       <button (click)="onSaveCourse()" class="btn save-btn">
