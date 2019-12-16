@@ -12,6 +12,7 @@ import { LogoComponent } from '../core/header/logo/logo.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthModule } from './auth/auth.module';
 import { RouterModule } from '@angular/router';
+import { httpInterceptorProviders } from './interceptors';
 
 
 @NgModule({
@@ -34,6 +35,9 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
+  ],
+  providers: [
+    httpInterceptorProviders
   ],
 })
 export class CoreModule { }

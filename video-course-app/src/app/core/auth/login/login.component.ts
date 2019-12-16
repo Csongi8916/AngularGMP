@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.authService.Login(email, password).subscribe(result => {
       if (result) {
         localStorage.setItem('token', result.token);
-        this.authService.SetAuthenticated(true);
+        this.authService.SetAuthenticated(result.token);
         this.authService.GetUserInfo(result.token).subscribe(user => {
           localStorage.setItem('email', user.login);
         });

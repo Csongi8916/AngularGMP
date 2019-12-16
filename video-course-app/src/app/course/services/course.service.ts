@@ -9,30 +9,17 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class CourseService {
 
-  // private courses: Course[];
   private httpOptions: object;
   private breadcrumbStack: object[];
+   
 
   constructor(private http: HttpClient) {
-    // this.courses = [];
     this.breadcrumbStack = [];
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
       })
     };  }
-
-  // Will be removed, when I will use real api
-  /*getNewId(): number {
-    let max = 0;
-    this.courses.forEach(c => {
-      if (c.id > max) {
-        max = c.id;
-      }
-    });
-
-    return ++max;
-  }*/
 
   pushBreadcrumb(name: string, url: string): void {
     this.breadcrumbStack.push({ breadcurmbName: name, breadcurmbUrl: url });
@@ -56,8 +43,9 @@ export class CourseService {
     }
   }
 
-  getCourses(): Observable<Course[]> {
-    let result = this.http.get<Course[]>('http://localhost:3004/courses');
+  getCourses(limit: number): Observable<Course[]> {
+    const start: number = limit - 3;
+    let result = this.http.get<Course[]>(`http://localhost:3004/courses?start=${start}&count=${limit}`);
     return result;
   }
 

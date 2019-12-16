@@ -8,11 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class AuthServiceService {
 
-  private isAuth: boolean;
+  private token: string;
   
-  constructor(private http: HttpClient) {
-    this.isAuth = false;
-  }
+  constructor(private http: HttpClient) { }
 
   Login(email: string, password: string): Observable<LoginModel> {
     if (email && password) {
@@ -25,17 +23,21 @@ export class AuthServiceService {
   Logout(): void {
     localStorage.removeItem('email');
     localStorage.removeItem('token');
-    this.isAuth = false;
+    this.token = '';
     console.log('Logged out successfully');
   }
 
   //TODO Must find better solution
-  SetAuthenticated(auth: boolean): void {
-    this.isAuth = auth;
+  SetAuthenticated(token: string): void {
+    this.token = token;
+  }
+
+  GetAuthToken(): string {
+    return this.token;
   }
 
   IsAuthenticated(): boolean {
-    return this.isAuth;
+    return this.token ? true : false;
   }
 
   GetUserInfo(token: string): Observable<User> {

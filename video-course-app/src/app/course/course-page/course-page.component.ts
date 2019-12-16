@@ -22,18 +22,21 @@ export class CoursePageComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    this.courses = [];
     this.getCourses();
     //this.courseService.pushBreadcrumb('Courses', this.router.url);
     console.log('Running: ngOnInit()');
   }
 
-  addCourse() {
+  addCourse(): void {
     this.router.navigate(['/courses/new']);
   }
 
-  getCourses() {
-    this.courseService.getCourses().subscribe(result => {
-      this.courses = result as Course[];
+  getCourses(): void {
+    const limit: number = this.courses.length === 0 ? 3 : this.courses.length;
+    this.courseService.getCourses(limit).subscribe(result => {
+      const newCourses = result as Course[];
+      this.courses = newCourses;
     });
   }
 
@@ -48,8 +51,9 @@ export class CoursePageComponent implements OnInit, OnChanges {
     const dialogRef = this.dialog.open(ConfirmModalComponent);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        const limit: number = this.courses.length - 1;
         this.courseService.removeCourse(event.id).subscribe(result => {
-          this.courseService.getCourses().subscribe(result => {
+          this.courseService.getCourses(limit).subscribe(result => {
             this.courses = result as Course[];
           });
         });
@@ -62,7 +66,7 @@ export class CoursePageComponent implements OnInit, OnChanges {
   }
 
   onLoadMore() {
-    console.log('Loading more....');
+    this.getCourses();
   }
 
   onClickMe() {
