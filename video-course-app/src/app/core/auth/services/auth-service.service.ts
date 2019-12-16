@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { User } from '../model/User';
+import { HttpClient } from '@angular/common/http';
+import { User, LoginModel } from '../model/User';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,44 +9,38 @@ import { User } from '../model/User';
 export class AuthServiceService {
 
   private isAuth: boolean;
-  private loggedUsers: User[];
-
-  constructor() {
+  
+  constructor(private http: HttpClient) {
     this.isAuth = false;
-    this.loggedUsers = [];
   }
 
-  Login(email: string, password: string): void {
+  Login(email: string, password: string): Observable<LoginModel> {
     if (email && password) {
-      console.log('Logged in successfully');
-      localStorage.setItem('email', email);
-      localStorage.setItem('token', 'fake token');
-      const user: User = { email: email, password: password, isAuthenticated: true };
-      this.loggedUsers.push(user);
-      this.isAuth = true;
+      let res = this.http.post<LoginModel>(`http://localhost:3004/auth/login`, {login: email, password: password});
+      return res;
     }
+    return null;
   }
 
   Logout(): void {
-    const email: string = localStorage.getItem('email');
     localStorage.removeItem('email');
     localStorage.removeItem('token');
     this.isAuth = false;
-    const index: number = this.loggedUsers.findIndex(x => x.email === email);
     console.log('Logged out successfully');
+  }
 
-    if (index > -1) {
-      this.loggedUsers.splice(index, 1);
-    }
+  //TODO Must find better solution
+  SetAuthenticated(auth: boolean): void {
+    this.isAuth = auth;
   }
 
   IsAuthenticated(): boolean {
     return this.isAuth;
   }
 
-  GetUserInfo(email: string): User {
-    const user: User = this.loggedUsers.find(x => x.email === email);
-    return user;
+  GetUserInfo(token: string): Observable<User> {
+    let res = this.http.post<User>(`http://localhost:3004/auth/userinfo`, { token: token });
+    return res;
   }
 
 }
