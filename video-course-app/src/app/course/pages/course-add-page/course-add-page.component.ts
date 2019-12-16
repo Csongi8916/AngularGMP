@@ -32,9 +32,11 @@ export class CourseAddPageComponent implements OnInit {
   }
 
   saveCourse() {
-    // this.course.id = this.courseService.getNewId();
-    this.courseService.createCourse(this.course);
-    this.router.navigate(['/courses']);
+    this.courseService.createCourse(this.course).subscribe(result => {
+      if (result.id) {
+        this.router.navigate(['/courses']);
+      }
+    });
   }
 
   cancelCourse() {

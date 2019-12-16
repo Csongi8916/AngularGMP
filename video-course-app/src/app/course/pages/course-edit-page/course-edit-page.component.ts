@@ -30,8 +30,11 @@ export class CourseEditPageComponent implements OnInit {
   }
 
   saveCourse() {
-    this.courseService.updateCourse(this.course);
-    this.router.navigate(['/courses']);
+    this.courseService.updateCourse(this.course).subscribe(result => {
+      if (result) {
+        this.router.navigate(['/courses']);
+      }
+    });
   }
 
   cancelCourse() {

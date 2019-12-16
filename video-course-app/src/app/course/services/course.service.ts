@@ -57,26 +57,28 @@ export class CourseService {
   }
 
   getCourses(): Observable<Course[]> {
-    let res = this.http.get<Course[]>('http://localhost:3004/courses');
-    return res;
+    let result = this.http.get<Course[]>('http://localhost:3004/courses');
+    return result;
   }
 
   getCourse(id: number): Observable<Course> {
-    // return this.courses.find(course => course.id === id);
-    let res = this.http.get<Course>(`http://localhost:3004/courses/${id}`);
-    return res;
+    let result = this.http.get<Course>(`http://localhost:3004/courses/${id}`);
+    return result;
   }
 
-  createCourse(course: Course): void {
-    this.http.post<Course>(`http://localhost:3004/courses`, course, this.httpOptions);
+  createCourse(course: Course): Observable<Course> {
+    let result = this.http.post<Course>(`http://localhost:3004/courses`, course, this.httpOptions);
+    return result;
   }
 
-  updateCourse(course: Course): void {
-    this.http.put<Course>(`http://localhost:3004/courses`, course, this.httpOptions);
+  updateCourse(course: Course): Observable<Course> {
+    let result = this.http.put<Course>(`http://localhost:3004/courses/${course.id}`, course, this.httpOptions);
+    return result;
   }
 
-  removeCourse(id: number): void {
-    this.http.delete(`http://localhost:3004/courses/${id}`);
+  removeCourse(id: number): Observable<Course> {
+    let result = this.http.delete<Course>(`http://localhost:3004/courses/${id}`, this.httpOptions);
+    return result;
   }
 
 }
