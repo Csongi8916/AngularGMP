@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Course } from 'src/Entities/Interfaces';
 import { CourseService } from '../../services/course.service';
@@ -8,6 +8,7 @@ import { CourseService } from '../../services/course.service';
   templateUrl: './course-add-page.component.html',
   styleUrls: ['./course-add-page.component.scss']
 })
+
 export class CourseAddPageComponent implements OnInit {
 
   course: Course;
@@ -31,7 +32,7 @@ export class CourseAddPageComponent implements OnInit {
     }
   }
 
-  saveCourse() {
+  saveCourse($event: any): void {
     this.courseService.createCourse(this.course).subscribe(result => {
       if (result.id) {
         this.router.navigate(['/courses']);
@@ -39,7 +40,7 @@ export class CourseAddPageComponent implements OnInit {
     });
   }
 
-  cancelCourse() {
+  cancelCourse($event: any): void {
     this.router.navigate(['/courses']);
   }
 

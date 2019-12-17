@@ -29,7 +29,7 @@ export class CourseEditPageComponent implements OnInit {
     }
   }
 
-  saveCourse() {
+  saveCourse($event: any) {
     this.courseService.updateCourse(this.course).subscribe(result => {
       if (result) {
         this.router.navigate(['/courses']);
@@ -37,7 +37,7 @@ export class CourseEditPageComponent implements OnInit {
     });
   }
 
-  cancelCourse() {
+  cancelCourse($event: any) {
     this.router.navigate(['/courses']);
   }
 
