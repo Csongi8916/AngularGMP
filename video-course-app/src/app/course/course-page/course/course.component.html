@@ -1,5 +1,5 @@
 <div appFreshCourseDirective [course]="course" class="vc-course-wrapper" [ngClass]="{'rate-course': course.topRated}">
-  <div>
+  <div class="data">
     <div class="course-header">
       <span class="course-title">
         {{ course.name | uppercase }}
@@ -15,13 +15,13 @@
     <p class="course-description">{{ course.description }}</p>
   </div>
   <div class="operation">
-    <button (click)="onEditCourse()">
+    <div><button (click)="onEditCourse()">
       <fa-icon [icon]="editIcon"></fa-icon>
       Edit
-    </button>
-    <button class="delete-btn" (click)="onDeleteCourse()">
+    </button></div>
+    <div><button class="delete-btn" (click)="onDeleteCourse()">
       <fa-icon [icon]="removeIcon"></fa-icon>
       Delete
-    </button>
+    </button></div>
   </div>
 </div>

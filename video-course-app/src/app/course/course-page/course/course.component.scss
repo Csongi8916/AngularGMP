@@ -52,11 +52,14 @@ $rate-icon-color: #e6bc00;
   color: slategray;
 }
 
+.data {
+  flex-basis: 80%;
+}
+
 .operation {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  min-width: 20%;
+  margin-left: 20px;
 }
 
 .operation button {
