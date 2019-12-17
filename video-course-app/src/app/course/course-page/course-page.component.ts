@@ -32,11 +32,11 @@ export class CoursePageComponent implements OnInit, OnChanges {
     this.router.navigate(['/courses/new']);
   }
 
-  getCourses(): void {
-    const limit: number = this.courses.length === 0 ? 3 : this.courses.length;
-    this.courseService.getCourses(limit).subscribe(result => {
+  getCourses(isLoadMore = false): void {
+    this.courseService.getCourses(isLoadMore).subscribe(result => {
       const newCourses = result as Course[];
-      this.courses = newCourses;
+      this.courses = [ ...this.courses, ...newCourses ];
+      debugger;
     });
   }
 
@@ -53,7 +53,7 @@ export class CoursePageComponent implements OnInit, OnChanges {
       if (result) {
         const limit: number = this.courses.length - 1;
         this.courseService.removeCourse(event.id).subscribe(result => {
-          this.courseService.getCourses(limit).subscribe(result => {
+          this.courseService.getCourses().subscribe(result => {
             this.courses = result as Course[];
           });
         });
@@ -66,7 +66,7 @@ export class CoursePageComponent implements OnInit, OnChanges {
   }
 
   onLoadMore() {
-    this.getCourses();
+    this.getCourses(true);
   }
 
   onClickMe() {

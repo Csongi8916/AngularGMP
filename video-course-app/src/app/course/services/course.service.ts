@@ -11,15 +11,35 @@ export class CourseService {
 
   private httpOptions: object;
   private breadcrumbStack: object[];
-   
+  private start: number;
+  private count: number; 
 
   constructor(private http: HttpClient) {
     this.breadcrumbStack = [];
+    this.start = 0;
+    this.count = 3;
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
       })
-    };  }
+    };
+  }
+
+  getStart(): number {
+    return this.start;
+  }
+
+  getCount(): number {
+    return this.count;
+  }
+
+  setStart(start: number): void {
+    this.start = start;
+  }
+
+  setCount(count: number): void {
+    this.count = count;
+  }
 
   pushBreadcrumb(name: string, url: string): void {
     this.breadcrumbStack.push({ breadcurmbName: name, breadcurmbUrl: url });
@@ -43,9 +63,14 @@ export class CourseService {
     }
   }
 
-  getCourses(limit: number): Observable<Course[]> {
-    const start: number = limit - 3;
-    let result = this.http.get<Course[]>(`http://localhost:3004/courses?start=${start}&count=${limit}`);
+  getCourses(isLoadMore: boolean = false): Observable<Course[]> {
+    let result;
+    if (isLoadMore || this.start === 0) {
+      result = this.http.get<Course[]>(`http://localhost:3004/courses?_sort=date&_order=asc&start=${this.start}&count=${this.count}`);
+      this.start += 3;
+    } else {
+      result = this.http.get<Course[]>(`http://localhost:3004/courses?_sort=date&_order=asc&start=0&count=${this.start}`);
+    }
     return result;
   }
 
