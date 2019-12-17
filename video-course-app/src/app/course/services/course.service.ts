@@ -63,6 +63,13 @@ export class CourseService {
     }
   }
 
+  searchCourses(textFragment: string): Observable<Course[]> {
+    // const result = this.http.get<Course[]>(`http://localhost:3004/courses?q=${textFragment}`);
+    // const result = this.http.get<Course[]>(`http://localhost:3004/courses?name=${textFragment}`);
+    const result = this.http.get<Course[]>(`http://localhost:3004/courses`);
+    return result;
+  }
+
   getCourses(isLoadMore: boolean = false): Observable<Course[]> {
     let result;
     if (isLoadMore || this.start === 0) {

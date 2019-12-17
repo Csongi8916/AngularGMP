@@ -36,7 +36,6 @@ export class CoursePageComponent implements OnInit, OnChanges {
     this.courseService.getCourses(isLoadMore).subscribe(result => {
       const newCourses = result as Course[];
       this.courses = [ ...this.courses, ...newCourses ];
-      debugger;
     });
   }
 
@@ -69,8 +68,19 @@ export class CoursePageComponent implements OnInit, OnChanges {
     this.getCourses(true);
   }
 
-  onClickMe() {
-    console.log(`${this.searchInput}`);
+  onClickMe(searchInput: string) {
+    this.courseService.searchCourses(searchInput).subscribe(result => {
+      searchInput = searchInput.toLowerCase();
+      this.courses = [];
+      this.courses = result.filter(course => {
+        const courseName = course.name.toLowerCase();
+        const courseDescription = course.description.toLowerCase();
+        if (courseName.includes(searchInput) || courseDescription.includes(searchInput)) {
+          return true;
+        }
+        return false;
+      });
+    });
   }
 
   ngOnChanges() {
