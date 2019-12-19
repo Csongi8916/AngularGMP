@@ -14,6 +14,7 @@ import { ConfirmModalComponent } from '../../shared/components/confirm-modal/con
 export class CoursePageComponent implements OnInit, OnChanges {
 
   searchInput: string;
+  searchCount: number;
   courses: Course[];
   addIcon = faPlus;
 
@@ -23,6 +24,8 @@ export class CoursePageComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.courses = [];
+    this.searchInput = '';
+    this.searchCount = 0;
     this.getCourses();
     //this.courseService.pushBreadcrumb('Courses', this.router.url);
     console.log('Running: ngOnInit()');
@@ -68,19 +71,24 @@ export class CoursePageComponent implements OnInit, OnChanges {
     this.getCourses(true);
   }
 
-  onClickMe(searchInput: string) {
-    this.courseService.searchCourses(searchInput).subscribe(result => {
-      searchInput = searchInput.toLowerCase();
-      this.courses = [];
-      this.courses = result.filter(course => {
-        const courseName = course.name.toLowerCase();
-        const courseDescription = course.description.toLowerCase();
-        if (courseName.includes(searchInput) || courseDescription.includes(searchInput)) {
-          return true;
-        }
-        return false;
+  onKey(event: any) { //KeyboardEvent
+    if (this.searchCount === 3) {
+      this.searchInput = (event.target.value).toLowerCase();
+      this.courseService.searchCourses(this.searchInput).subscribe(result => {
+        this.courses = [];
+        this.courses = result.filter(course => {
+          const courseName = course.name.toLowerCase();
+          const courseDescription = course.description.toLowerCase();
+          if (courseName.includes(this.searchInput) || courseDescription.includes(this.searchInput)) {
+            return true;
+          }
+          return false;
+        });
       });
-    });
+      this.searchCount = 0;
+    } else {
+      this.searchCount++;
+    }
   }
 
   ngOnChanges() {

@@ -1,10 +1,7 @@
 <vc-course-breadcrumb></vc-course-breadcrumb>
 
 <div class="vc-course-page-wrapper">
-  <input #searchInput placeholder="Text to search" class="input" />
-  <button class="search-btn" (click)="onClickMe(searchInput.value)">
-    <span>Search</span>
-  </button>
+  <input #searchInput placeholder="Text to search" (keyup)="onKey($event)" class="input" />
 
   <div class="add-course">
     <button (click)="addCourse()">
