@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Course } from 'src/Entities/Interfaces';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { map, filter, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -66,8 +67,59 @@ export class CourseService {
   searchCourses(textFragment: string): Observable<Course[]> {
     // const result = this.http.get<Course[]>(`http://localhost:3004/courses?q=${textFragment}`);
     // const result = this.http.get<Course[]>(`http://localhost:3004/courses?name=${textFragment}`);
-    const result = this.http.get<Course[]>(`http://localhost:3004/courses`);
+    /*const result = this.http.get<Course[]>(`http://localhost:3004/courses`)
+     .pipe(map(data => {
+        return data.filter(course => {
+          textFragment = textFragment.toLowerCase();
+          const courseName = course.name.toLowerCase();
+          const courseDescription = course.description.toLowerCase();
+          if (courseName.includes(textFragment) || courseDescription.includes(textFragment)) {
+            return true;
+          }
+          return false;
+        });
+      })
+     )*/
+
+     const result = this.http.get<Course[]>(`http://localhost:3004/courses`)
+     .pipe(map(data => data.filter(c => { 
+        textFragment = textFragment.toLowerCase();
+        const courseName = c.name.toLowerCase();
+        const courseDescription = c.description.toLowerCase();
+        if (courseName.includes(textFragment) || courseDescription.includes(textFragment)) {
+          return true;
+        }
+        return false;
+     })));
+        /*{
+        return data.filter(course => {
+          textFragment = textFragment.toLowerCase();
+          const courseName = course.name.toLowerCase();
+          const courseDescription = course.description.toLowerCase();
+          if (courseName.includes(textFragment) || courseDescription.includes(textFragment)) {
+            return true;
+          }
+          return false;*/
+        //});
+     // })
+     //)
+
+
+
     return result;
+
+
+    /*const result = this.http.get<Course[]>(`http://localhost:3004/courses`).subscribe(result => {
+      const courses = result.filter(course => {
+        const courseName = course.name.toLowerCase();
+        const courseDescription = course.description.toLowerCase();
+        if (courseName.includes(textFragment) || courseDescription.includes(textFragment)) {
+          return true;
+        }
+        return false;
+      });
+    });
+    return result;*/
   }
 
   getCourses(isLoadMore: boolean = false): Observable<Course[]> {

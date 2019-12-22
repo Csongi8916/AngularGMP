@@ -5,6 +5,7 @@ import { Course } from '../../../Entities/Interfaces';
 import { CourseService } from '../services/course.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmModalComponent } from '../../shared/components/confirm-modal/confirm-modal.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'vc-course-page',
@@ -73,23 +74,42 @@ export class CoursePageComponent implements OnInit, OnChanges {
 
   onKey(event: any) { //KeyboardEvent
     if (this.searchCount === 3) {
-      this.searchInput = (event.target.value).toLowerCase();
+      //this.debounce(event.target.value);
+      this.searchInput = event.target.value;
       this.courseService.searchCourses(this.searchInput).subscribe(result => {
-        this.courses = [];
-        this.courses = result.filter(course => {
-          const courseName = course.name.toLowerCase();
-          const courseDescription = course.description.toLowerCase();
-          if (courseName.includes(this.searchInput) || courseDescription.includes(this.searchInput)) {
-            return true;
-          }
-          return false;
-        });
+        result.forEach(course => { console.log(course.id + ' - ' + course.name + ' - ' + course.description) });
+        this.courses = result;
+        /*next(x) {
+          console.log(x);
+        },
+        error(err) {
+          console.error('something wrong occurred: ' + err);
+        },
+        complete() {
+          console.log('done');
+        }*/
       });
       this.searchCount = 0;
     } else {
       this.searchCount++;
     }
   }
+
+  /*private debounce(textFragment: string): Observable<number> {
+    this.searchInput = (textFragment).toLowerCase();
+    this.courseService.searchCourses(this.searchInput).subscribe(result => {
+      const observable = new Observable<number>(subscriber => {
+        subscriber.next(1);
+        subscriber.next(2);
+        subscriber.next(3);
+        setTimeout(() => {
+          subscriber.next(4);
+          subscriber.complete();
+        }, 1000);
+      });
+      return observable;
+    });
+  }*/
 
   ngOnChanges() {
     console.log('OnChanges');
