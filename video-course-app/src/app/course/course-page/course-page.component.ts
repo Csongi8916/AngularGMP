@@ -5,7 +5,9 @@ import { Course } from '../../../Entities/Interfaces';
 import { CourseService } from '../services/course.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmModalComponent } from '../../shared/components/confirm-modal/confirm-modal.component';
-import { Observable } from 'rxjs';
+import { Observable, Subject, fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+
 
 @Component({
   selector: 'vc-course-page',
@@ -14,8 +16,8 @@ import { Observable } from 'rxjs';
 })
 export class CoursePageComponent implements OnInit, OnChanges {
 
+  subject = new Subject<string>();
   searchInput: string;
-  searchCount: number;
   courses: Course[];
   addIcon = faPlus;
 
@@ -26,10 +28,21 @@ export class CoursePageComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.courses = [];
     this.searchInput = '';
-    this.searchCount = 0;
     this.getCourses();
     //this.courseService.pushBreadcrumb('Courses', this.router.url);
+    this.searchMethod();
     console.log('Running: ngOnInit()');
+  }
+
+  private searchMethod(): void {
+    this.subject
+    .pipe(debounceTime(500))
+    .subscribe(v => {
+      this.searchInput = v.toLowerCase();
+      this.courseService.searchCourses(this.searchInput).subscribe(result => {
+        this.courses = result;
+      });
+    });
   }
 
   addCourse(): void {
@@ -73,43 +86,11 @@ export class CoursePageComponent implements OnInit, OnChanges {
   }
 
   onKey(event: any) { //KeyboardEvent
-    if (this.searchCount === 3) {
-      //this.debounce(event.target.value);
-      this.searchInput = event.target.value;
-      this.courseService.searchCourses(this.searchInput).subscribe(result => {
-        result.forEach(course => { console.log(course.id + ' - ' + course.name + ' - ' + course.description) });
-        this.courses = result;
-        /*next(x) {
-          console.log(x);
-        },
-        error(err) {
-          console.error('something wrong occurred: ' + err);
-        },
-        complete() {
-          console.log('done');
-        }*/
-      });
-      this.searchCount = 0;
-    } else {
-      this.searchCount++;
+    const input: string = event.target.value;
+    if (input.length >= 3) {
+      this.subject.next(input);
     }
   }
-
-  /*private debounce(textFragment: string): Observable<number> {
-    this.searchInput = (textFragment).toLowerCase();
-    this.courseService.searchCourses(this.searchInput).subscribe(result => {
-      const observable = new Observable<number>(subscriber => {
-        subscriber.next(1);
-        subscriber.next(2);
-        subscriber.next(3);
-        setTimeout(() => {
-          subscriber.next(4);
-          subscriber.complete();
-        }, 1000);
-      });
-      return observable;
-    });
-  }*/
 
   ngOnChanges() {
     console.log('OnChanges');
