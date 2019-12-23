@@ -35,6 +35,7 @@ export class CourseAddPageComponent implements OnInit {
   saveCourse($event: any): void {
     this.courseService.createCourse(this.course).subscribe(result => {
       if (result.id) {
+        this.courseService.pendingState.next(false);
         this.router.navigate(['/courses']);
       }
     });

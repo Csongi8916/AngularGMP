@@ -5,7 +5,7 @@ import { Course } from '../../../Entities/Interfaces';
 import { CourseService } from '../services/course.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmModalComponent } from '../../shared/components/confirm-modal/confirm-modal.component';
-import { Observable, Subject, fromEvent } from 'rxjs';
+import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 
@@ -29,18 +29,18 @@ export class CoursePageComponent implements OnInit, OnChanges {
     this.courses = [];
     this.searchInput = '';
     this.getCourses();
-    //this.courseService.pushBreadcrumb('Courses', this.router.url);
     this.searchMethod();
-    console.log('Running: ngOnInit()');
   }
 
   private searchMethod(): void {
+    this.courseService.pendingState.next(true);
     this.subject
     .pipe(debounceTime(500))
     .subscribe(v => {
       this.searchInput = v.toLowerCase();
       this.courseService.searchCourses(this.searchInput).subscribe(result => {
         this.courses = result;
+        this.courseService.pendingState.next(false);
       });
     });
   }
@@ -50,9 +50,11 @@ export class CoursePageComponent implements OnInit, OnChanges {
   }
 
   getCourses(isLoadMore = false): void {
+    this.courseService.pendingState.next(true);
     this.courseService.getCourses(isLoadMore).subscribe(result => {
       const newCourses = result as Course[];
       this.courses = [ ...this.courses, ...newCourses ];
+      this.courseService.pendingState.next(false);
     });
   }
 
@@ -71,6 +73,7 @@ export class CoursePageComponent implements OnInit, OnChanges {
         this.courseService.removeCourse(event.id).subscribe(result => {
           this.courseService.getCourses().subscribe(result => {
             this.courses = result as Course[];
+            this.courseService.pendingState.next(false);
           });
         });
       }

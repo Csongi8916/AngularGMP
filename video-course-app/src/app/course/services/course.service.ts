@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Course } from 'src/Entities/Interfaces';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { map, filter, catchError } from 'rxjs/operators';
 
@@ -10,12 +10,15 @@ import { map, filter, catchError } from 'rxjs/operators';
 })
 export class CourseService {
 
+  pendingState: BehaviorSubject<boolean>;
+
   private httpOptions: object;
   private breadcrumbStack: object[];
   private start: number;
   private count: number; 
 
   constructor(private http: HttpClient) {
+    this.pendingState = new BehaviorSubject<boolean>(false);
     this.breadcrumbStack = [];
     this.start = 0;
     this.count = 3;
