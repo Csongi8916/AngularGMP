@@ -16,7 +16,8 @@ export class CourseEditorComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+  }
 
   onChange(value) {
     if (!value) {

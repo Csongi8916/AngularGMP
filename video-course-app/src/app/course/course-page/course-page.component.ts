@@ -33,7 +33,6 @@ export class CoursePageComponent implements OnInit, OnChanges {
   }
 
   private searchMethod(): void {
-    this.courseService.pendingState.next(true);
     this.subject
     .pipe(debounceTime(500))
     .subscribe(v => {
@@ -50,7 +49,6 @@ export class CoursePageComponent implements OnInit, OnChanges {
   }
 
   getCourses(isLoadMore = false): void {
-    this.courseService.pendingState.next(true);
     this.courseService.getCourses(isLoadMore).subscribe(result => {
       const newCourses = result as Course[];
       this.courses = [ ...this.courses, ...newCourses ];

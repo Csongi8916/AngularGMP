@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
         const token = window.localStorage.getItem('token');
         this.authService.GetUserInfo(token).subscribe(user => {
           this.username = user.login;
-          console.log(this.username);
         });
       }
     });
