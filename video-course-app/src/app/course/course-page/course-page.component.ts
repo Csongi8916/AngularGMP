@@ -51,7 +51,11 @@ export class CoursePageComponent implements OnInit, OnChanges {
   getCourses(isLoadMore = false): void {
     this.courseService.getCourses(isLoadMore).subscribe(result => {
       const newCourses = result as Course[];
-      this.courses = [ ...this.courses, ...newCourses ];
+      if (isLoadMore) {
+        this.courses = [ ...this.courses, ...newCourses ];
+      } else {
+        this.courses = [ ...newCourses ];
+      }
       this.courseService.pendingState.next(false);
     });
   }
@@ -88,6 +92,10 @@ export class CoursePageComponent implements OnInit, OnChanges {
 
   onKey(event: any) { //KeyboardEvent
     const input: string = event.target.value;
+    if (input.length === 0) {
+      this.courses = [];
+      this.getCourses();
+    }
     if (input.length >= 3) {
       this.subject.next(input);
     }
