@@ -12,13 +12,12 @@ export class AuthServiceService {
   authState: BehaviorSubject<boolean>;
   
   constructor(private http: HttpClient) {
-    //this.authState = new BehaviorSubject<boolean>(this.IsAuthenticated());
+    this.authState = new BehaviorSubject<boolean>(this.IsAuthenticated());
   }
 
   Login(email: string, password: string): Observable<LoginModel> {
     if (email && password) {
       let res = this.http.post<LoginModel>(`http://localhost:3004/auth/login`, {login: email, password: password});
-      //this.authState.next(true);
       return res;
     }
     return null;
@@ -28,7 +27,7 @@ export class AuthServiceService {
     localStorage.removeItem('email');
     localStorage.removeItem('token');
     this.token = '';
-    //this.authState.next(false);
+    this.authState.next(false);
     console.log('Logged out successfully');
   }
 

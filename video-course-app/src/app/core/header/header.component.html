@@ -8,6 +8,7 @@
       <img src="../../assets/ic-user.svg" />
       <span>User login</span>
     </button>
+    <p *ngIf="authService.IsAuthenticated()" class="username-label">Welcome {{ username }}!</p>
     <button *ngIf="authService.IsAuthenticated()" (click)="LogoutClickHandler()" class="log-btn" routerLink="/login"
       routerLinkActive="active">
       <img src="../../assets/ic-exit.svg" />

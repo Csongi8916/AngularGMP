@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
         this.authService.GetUserInfo(result.token).subscribe(user => {
           localStorage.setItem('email', user.login);
         });
+        this.authService.authState.next(true);
         this.router.navigate(['/']);
       } else {
         alert('Sikertelen bejelentkezés');
