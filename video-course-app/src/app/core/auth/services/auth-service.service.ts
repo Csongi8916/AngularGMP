@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
 import { User, LoginModel } from '../model/User';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { dispatch } from 'rxjs/internal/observable/pairs';
-import * as AuthActions from '../../../store/actions/auth.action';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +11,13 @@ export class AuthServiceService {
   private token: string;
   authState: BehaviorSubject<boolean>;
 
-  constructor(private http: HttpClient, private store: Store<string>) {
+  constructor(private http: HttpClient) {
     this.authState = new BehaviorSubject<boolean>(this.IsAuthenticated());
   }
 
   Login(email: string, password: string): Observable<LoginModel> {
     if (email && password) {
-      const res = this.http.post<LoginModel>(`http://localhost:3004/auth/login`, { login: email, password: password });
-      res.subscribe(result => {
-        this.store.dispatch(new AuthActions.Login({ token: result.token }));
-      });
-      return res;
+      return this.http.post<LoginModel>(`http://localhost:3004/auth/login`, { login: email, password: password });
     }
     return null;
   }
