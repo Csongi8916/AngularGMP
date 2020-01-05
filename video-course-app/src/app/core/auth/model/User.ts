@@ -7,4 +7,5 @@ export interface User {
 export interface LoginModel {
   isLogged: boolean;
   token: string;
+  login: string;
 }

@@ -5,20 +5,26 @@ import {
 
 import { Observable } from 'rxjs';
 import { AuthServiceService } from '../auth/services/auth-service.service';
+import { Store } from '@ngrx/store';
+import AuthState from 'src/app/store/model/auth.state';
 
 @Injectable()
 export class AuthTokenInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthServiceService) {}
+  constructor(private store: Store<{authInfo: AuthState}>) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any>> {
-    const token: string = this.authService.GetAuthToken();
-    req = req.clone({
-      setHeaders: {
-        Authorization: `${token}`
-      }
+    let token: string = '';
+    this.store.source.subscribe(x => {
+      token = x.auth.token;
+      req = req.clone({
+        setHeaders: {
+          Authorization: `${token}`
+        }
+      });
     });
+
     return next.handle(req);
   }
 }

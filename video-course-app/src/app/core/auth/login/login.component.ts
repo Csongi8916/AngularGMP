@@ -5,6 +5,7 @@ import { User } from '../model/User';
 import { Course } from 'src/Entities/Interfaces';
 import { Store } from '@ngrx/store';
 import * as AuthActions from '../../../store/actions/auth.action';
+import AuthState from 'src/app/store/model/auth.state';
 
 @Component({
   selector: 'vc-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor(private authService: AuthServiceService, private router: Router, private store: Store<string>) { }
+  constructor(private authService: AuthServiceService, private router: Router, private store: Store<AuthState>) { }
 
   ngOnInit() {
   }
@@ -24,13 +25,10 @@ export class LoginComponent implements OnInit {
   LoginClickHandler(email: string, password: string) {
     this.authService.Login(email, password).subscribe(result => {
       if (result) {
-        this.store.dispatch(new AuthActions.Login({ token: result.token }));
+        this.store.dispatch(new AuthActions.Login({login: email, token: result.token, isLogged: true}));
         localStorage.setItem('token', result.token);
+        localStorage.setItem('email', result.login);
         this.authService.SetAuthenticated(result.token);
-        this.authService.GetUserInfo(result.token).subscribe(user => {
-          localStorage.setItem('email', user.login);
-        });
-        this.authService.authState.next(true);
         this.router.navigate(['/']);
       } else {
         alert('Sikertelen bejelentkezés');

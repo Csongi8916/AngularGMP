@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User, LoginModel } from '../model/User';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { Store } from '@ngrx/store';
+import AuthState from 'src/app/store/model/auth.state';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +11,8 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class AuthServiceService {
 
   private token: string;
-  authState: BehaviorSubject<boolean>;
 
-  constructor(private http: HttpClient) {
-    this.authState = new BehaviorSubject<boolean>(this.IsAuthenticated());
+  constructor(private http: HttpClient, private store: Store<{authInfo: AuthState}>) {
   }
 
   Login(email: string, password: string): Observable<LoginModel> {
@@ -26,7 +26,6 @@ export class AuthServiceService {
     localStorage.removeItem('email');
     localStorage.removeItem('token');
     this.token = '';
-    this.authState.next(false);
     console.log('Logged out successfully');
   }
 
@@ -35,12 +34,9 @@ export class AuthServiceService {
     this.token = token;
   }
 
-  GetAuthToken(): string {
-    return this.token;
-  }
-
   IsAuthenticated(): boolean {
-    return this.token ? true : false;
+    const token = localStorage.getItem('token');
+    return token ? true : false;
   }
 
   GetUserInfo(token: string): Observable<User> {
