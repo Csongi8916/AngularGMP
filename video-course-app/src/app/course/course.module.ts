@@ -17,6 +17,8 @@ import { CourseEditPageComponent } from './pages/course-edit-page/course-edit-pa
 import { RouterModule } from '@angular/router';
 import { CourseEditorComponent } from './course-editor/course-editor.component';
 
+import { DateValidatorDirective } from './validators/date-validator.directive';
+import { NumberValidatorDirective } from './validators/number-validator.directive';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { CourseEditorComponent } from './course-editor/course-editor.component';
     FilterPipe,
     OrderbyPipe,
     FreshCourseDirective,
+    DateValidatorDirective,
+    NumberValidatorDirective,
     DurationPipe,
     CourseAddPageComponent,
     CourseEditPageComponent,

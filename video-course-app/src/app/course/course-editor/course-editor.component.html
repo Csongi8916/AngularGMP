@@ -34,11 +34,13 @@
           <p>Date:</p>
           <div *ngIf="courseForm.submitted && date.invalid" class="invalid-feedback">
             <div *ngIf="date.errors.required">This field is required</div>
+            <div *ngIf="date.errors.dateFormat">{{ date.errors.dateFormat }}</div>
+            date
           </div>
         </div>
         <input [(ngModel)]="course.date" class="input-date" name="date" #date="ngModel" type="text"
           [ngClass]="{ 'is-invalid': courseForm.submitted && date.invalid }"
-          required />
+          vc-date-validator required />
       </div>
 
       <div class="form-group">
@@ -46,11 +48,13 @@
           <p>Duration:</p>
           <div *ngIf="courseForm.submitted && duration.invalid" class="invalid-feedback">
             <div *ngIf="duration.errors.required">This field is required</div>
+            <div *ngIf="date.errors.number">{{ date.errors.number }}</div>
           </div>
         </div>
         <input [(ngModel)]="course.length" (ngModelChange)="onChange($event)" class="input-duration" name="duration" #duration="ngModel"
           [ngClass]="{ 'is-invalid': courseForm.submitted && duration.invalid }"
-          type="number" required />
+          type="number"
+          vc-number-validator required />
         <span class="duration-text">{{ course.length | duration }}</span>
       </div>
 
