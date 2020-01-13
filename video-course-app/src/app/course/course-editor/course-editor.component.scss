@@ -1,6 +1,10 @@
 .wrapper-course-add {
   display: flex;
 
+  .invalid-feedback {
+    color: red;
+  }
+
   .form-course-add {
     max-width: 800px;
     margin: auto;

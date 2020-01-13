@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
+import { FormControl, FormGroup , Validator } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Course } from 'src/Entities/Interfaces';
 import { CourseService } from '../services/course.service';
@@ -17,6 +18,10 @@ export class CourseEditorComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() { 
+  }
+
+  onSubmit() {
+    console.log('submit');
   }
 
   onChange(value) {
