@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
-import { FormControl, FormGroup , Validator } from '@angular/forms';
+import { FormControl, FormGroup, Validator, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Course } from 'src/Entities/Interfaces';
 import { CourseService } from '../services/course.service';
@@ -17,7 +17,7 @@ export class CourseEditorComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit() { 
+  ngOnInit() {
   }
 
   onSubmit() {
@@ -37,5 +37,22 @@ export class CourseEditorComponent implements OnInit {
   onCancelCourse() {
     this.cancel.emit(this.course);
   }
+
+  /*validateJuriNameFactory(): ValidatorFn {
+    return (c: AbstractControl) => {
+
+      let isValid = c.value === 'Juri';
+
+      if (isValid) {
+        return null;
+      } else {
+        return {
+          juriName: {
+            valid: false
+          }
+        };
+      }
+    }
+  }*/
 
 }
