@@ -21,17 +21,13 @@ export class CourseEditorComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submit');
+    this.save.emit(this.course);
   }
 
   onChange(value) {
     if (!value) {
       this.course.length = 0;
     }
-  }
-
-  onSaveCourse() {
-    this.save.emit(this.course);
   }
 
   onCancelCourse() {

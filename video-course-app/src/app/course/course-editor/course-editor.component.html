@@ -2,26 +2,61 @@
 <form (ngSubmit)="courseForm.form.valid && onSubmit()" #courseForm="ngForm" class="wrapper-course-add">
   <div class="form-course-add">
     <div>
-      <p>Title:</p>
-      <div *ngIf="courseForm.submitted && title.invalid" class="invalid-feedback">
-        <div *ngIf="title.errors.required">Title is required</div>
-        <div *ngIf="title.errors.maxlength">Number of charatcers max: 50</div>
+
+      <div class="form-group">
+        <div class="form-info">
+          <p>Title:</p>
+          <div *ngIf="courseForm.submitted && title.invalid" class="invalid-feedback">
+            <div *ngIf="title.errors.required">This field is required</div>
+          </div>
+        </div>
+        <input [(ngModel)]="course.name" class="input-text"  name="title" #title="ngModel" type="text"
+          [ngClass]="{ 'is-invalid': courseForm.submitted && title.invalid }"
+          maxlength="50" required />
       </div>
-      <input [(ngModel)]="course.name" class="input-text" name="title" #title="ngModel" type="text" ngModel
-        maxlength="50" required />
-      <p>Description: </p>
-      <textarea [(ngModel)]="course.description" name="description" rows="4" cols="50">
-        {{ course.description }}
-      </textarea>
-      <p>Date: </p>
-      <input [(ngModel)]="course.date" class="input-date" name="date" type="text" />
-      <p>Duration: </p>
-      <input [(ngModel)]="course.length" (ngModelChange)="onChange($event)" class="input-duration" name="length"
-        type="number" />
-      <span class="duration-text">{{ course.length | duration }}</span>
+
+      <div class="form-group">
+        <div class="form-info">
+          <p>Description:</p>
+          <div *ngIf="courseForm.submitted && description.invalid" class="invalid-feedback">
+            <div *ngIf="description.errors.required">This field is required</div>
+          </div>
+        </div>
+        <textarea [(ngModel)]="course.description" name="description" #description="ngModel" rows="4" cols="50"
+          [ngClass]="{ 'is-invalid': courseForm.submitted && description.invalid }"
+          maxlength="500" required>
+          {{ course.description }}
+        </textarea>
+      </div>
+
+      <div class="form-group">
+        <div class="form-info">
+          <p>Date:</p>
+          <div *ngIf="courseForm.submitted && date.invalid" class="invalid-feedback">
+            <div *ngIf="date.errors.required">This field is required</div>
+          </div>
+        </div>
+        <input [(ngModel)]="course.date" class="input-date" name="date" #date="ngModel" type="text"
+          [ngClass]="{ 'is-invalid': courseForm.submitted && date.invalid }"
+          required />
+      </div>
+
+      <div class="form-group">
+        <div class="form-info">
+          <p>Duration:</p>
+          <div *ngIf="courseForm.submitted && duration.invalid" class="invalid-feedback">
+            <div *ngIf="duration.errors.required">This field is required</div>
+          </div>
+        </div>
+        <input [(ngModel)]="course.length" (ngModelChange)="onChange($event)" class="input-duration" name="duration" #duration="ngModel"
+          [ngClass]="{ 'is-invalid': courseForm.submitted && duration.invalid }"
+          type="number" required />
+        <span class="duration-text">{{ course.length | duration }}</span>
+      </div>
+
     </div>
     <div>
-      <button type="submit" (click)="onSaveCourse()" class="btn save-btn">
+      <button type="submit" class="btn save-btn">
         Save
       </button>
       <button (click)="onCancelCourse()" class="btn cancel-btn">

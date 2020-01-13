@@ -3,6 +3,12 @@
 
   .invalid-feedback {
     color: red;
+    margin-left: 35px;
+    margin-top:  15px;
+  }
+
+  .form-info {
+    display: flex;
   }
 
   .form-course-add {
@@ -25,6 +31,11 @@
     border: solid 1px #d9dbe3;
     background-color: #ffffff;
     font-size: 16px;
+  }
+
+  //TODO: Do specifics with sass!
+  .is-invalid {
+    border: 2px solid red;
   }
 
   .input-text, .input-date, .input-duration {
