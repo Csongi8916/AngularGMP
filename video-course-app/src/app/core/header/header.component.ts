@@ -43,6 +43,11 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.isLoginPage = window.location.pathname === '/login';
   }
 
+  onChangeLanguageSelect(language: string) {
+    console.log(language);
+    this.translateService.use(language);
+  }
+
   LogoutClickHandler() {
     this.username = '';
     this.store.dispatch(new AuthActions.Logout());

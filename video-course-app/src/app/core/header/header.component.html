@@ -8,6 +8,10 @@
       <img src="../../assets/ic-user.svg" />
       <span>User login</span>
     </button>
+    <select (change)="onChangeLanguageSelect($event.target.value)">
+      <option value="en">Eng</option>
+      <option value="hu">Hun</option>
+    </select>
     <!--<p *ngIf="authService.IsAuthenticated()" class="username-label">Welcome {{ authInfo$.username | async }}!</p>-->
     <p *ngIf="authService.IsAuthenticated()" class="username-label">{{ welcomeText }} {{ username }}!</p>
     <!--<div>{{ 'HELLO' | translate }}</div>-->
