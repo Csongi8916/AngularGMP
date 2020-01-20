@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validator, ValidatorFn, AbstractControl } from 
 import { Router, ActivatedRoute } from '@angular/router';
 import { Course } from 'src/Entities/Interfaces';
 import { CourseService } from '../services/course.service';
+import { TranslateDirective, TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'vc-course-editor',
@@ -15,9 +17,11 @@ export class CourseEditorComponent implements OnInit {
   @Output() save: EventEmitter<Course> = new EventEmitter<Course>();
   @Output() cancel: EventEmitter<Course> = new EventEmitter<Course>();
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor() {
+  }
 
   ngOnInit() {
+
   }
 
   onSubmit() {

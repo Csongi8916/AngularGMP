@@ -5,7 +5,7 @@
 
   <div class="add-course">
     <button (click)="addCourse()">
-      <fa-icon [icon]="addIcon" class="icon"></fa-icon>Add course
+      <fa-icon [icon]="addIcon" class="icon"></fa-icon>{{ addTitleText }}
     </button>
   </div>
 
@@ -17,7 +17,7 @@
     </div>
 
     <div class="load-more">
-      <p><button (click)="onLoadMore()"><a>Load more</a></button></p>
+      <p><button (click)="onLoadMore()"><a>{{ loadMoreText }}</a></button></p>
     </div>
   </div>
 

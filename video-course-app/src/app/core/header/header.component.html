@@ -9,7 +9,8 @@
       <span>User login</span>
     </button>
     <!--<p *ngIf="authService.IsAuthenticated()" class="username-label">Welcome {{ authInfo$.username | async }}!</p>-->
-    <p *ngIf="authService.IsAuthenticated()" class="username-label">Welcome {{ username }}!</p>
+    <p *ngIf="authService.IsAuthenticated()" class="username-label">{{ welcomeText }} {{ username }}!</p>
+    <!--<div>{{ 'HELLO' | translate }}</div>-->
     <button *ngIf="authService.IsAuthenticated()" (click)="LogoutClickHandler()" class="log-btn" routerLink="/login"
       routerLinkActive="active">
       <img src="../../assets/ic-exit.svg" />

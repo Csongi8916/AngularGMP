@@ -10,6 +10,7 @@ import { debounceTime } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import CourseState from 'src/app/store/model/course.state';
 import * as CourseActions from '../../store/actions/course.action';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -24,8 +25,14 @@ export class CoursePageComponent implements OnInit, OnChanges {
   courses: Course[];
   addIcon = faPlus;
 
-  constructor(private courseService: CourseService, public dialog: MatDialog, private router: Router, private store: Store<{authInfo: CourseState}>) {
+  translateService: TranslateService;
+  addTitleText: string;
+  loadMoreText: string;
+
+  constructor(private courseService: CourseService, public dialog: MatDialog, private router: Router, private store: Store<{authInfo: CourseState}>,
+    translateService: TranslateService) {
     console.log('Running: constructor()');
+    this.translateService = translateService;
   }
 
   ngOnInit() {
@@ -33,6 +40,13 @@ export class CoursePageComponent implements OnInit, OnChanges {
     this.searchInput = '';
     this.getCourses();
     this.searchMethod();
+
+    this.translateService.get('ADD_COURSE').subscribe((res: string) => {
+      this.addTitleText = res;
+    });
+    this.translateService.get('LOAD_MORE').subscribe((res: string) => {
+      this.loadMoreText = res;
+    });
   }
 
   private searchMethod(): void {
