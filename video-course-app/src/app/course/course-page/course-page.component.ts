@@ -25,12 +25,11 @@ export class CoursePageComponent implements OnInit, OnChanges {
   courses: Course[];
   addIcon = faPlus;
 
-  translateService: TranslateService;
   addTitleText: string;
   loadMoreText: string;
 
   constructor(private courseService: CourseService, public dialog: MatDialog, private router: Router, private store: Store<{ authInfo: CourseState }>,
-    translateService: TranslateService) {
+    private translateService: TranslateService) {
     console.log('Running: constructor()');
     this.translateService = translateService;
   }
@@ -41,10 +40,10 @@ export class CoursePageComponent implements OnInit, OnChanges {
     this.getCourses();
     this.searchMethod();
 
-    this.translateService.get('ADD_COURSE').subscribe((res: string) => {
+    this.translateService.stream('ADD_COURSE').subscribe((res: string) => {
       this.addTitleText = res;
     });
-    this.translateService.get('LOAD_MORE').subscribe((res: string) => {
+    this.translateService.stream('LOAD_MORE').subscribe((res: string) => {
       this.loadMoreText = res;
     });
   }

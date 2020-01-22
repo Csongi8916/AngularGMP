@@ -16,26 +16,21 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class HeaderComponent implements OnInit, DoCheck {
 
-  translateService: TranslateService;
   authInfo$: Observable<AuthState>;
   isLoginPage: boolean;
   username: string;
-  //translate: TranslatePipe;
 
   welcomeText: string;
 
-  constructor(public authService: AuthServiceService, private store: Store<{ authInfo: AuthState }>, translateService: TranslateService,
-    private ref: ChangeDetectorRef /*translate: TranslatePipe*/) {
+  constructor(public authService: AuthServiceService, private store: Store<{ authInfo: AuthState }>, private translateService: TranslateService) {
     this.authInfo$ = this.store.select(state => state.authInfo);
-    this.translateService = translateService;
-    //this.translate = translate;
   }
 
   ngOnInit() {
     this.store.source.subscribe(x => {
       this.username = x.auth.username
     });
-    this.translateService.get('WELCOME').subscribe((res: string) => {
+    this.translateService.stream('WELCOME').subscribe((res: string) => {
       this.welcomeText = res;
     });
   }
@@ -47,7 +42,6 @@ export class HeaderComponent implements OnInit, DoCheck {
   onChangeLanguageSelect(language: string) {
     console.log(language);
     this.translateService.use(language);
-    //this.ref.detach();
   }
 
   LogoutClickHandler() {

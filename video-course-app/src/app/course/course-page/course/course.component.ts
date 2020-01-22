@@ -16,14 +16,12 @@ export class CourseComponent implements OnInit {
 
   clockIcon; calendarIcon; editIcon; removeIcon; testStr; starCharacter;
 
-  translateService: TranslateService;
   editText: string;
   deleteText: string;
 
   @Input() course: Course;
 
-  constructor(private courseService: CourseService, private router: Router, translateService: TranslateService) { 
-    this.translateService = translateService;
+  constructor(private courseService: CourseService, private router: Router, private translateService: TranslateService) {
   }
 
   @Output() delete: EventEmitter<Course> = new EventEmitter<Course>();
@@ -37,10 +35,10 @@ export class CourseComponent implements OnInit {
     this.testStr = 'test';
     this.starCharacter = '&#9733;';
 
-    this.translateService.get('EDIT').subscribe((res: string) => {
+    this.translateService.stream('EDIT').subscribe((res: string) => {
       this.editText = res;
     });
-    this.translateService.get('DELETE').subscribe((res: string) => {
+    this.translateService.stream('DELETE').subscribe((res: string) => {
       this.deleteText = res;
     });
   }
