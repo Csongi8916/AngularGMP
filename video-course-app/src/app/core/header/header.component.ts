@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, ChangeDetectorRef } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -24,7 +24,8 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   welcomeText: string;
 
-  constructor(public authService: AuthServiceService, private store: Store<{authInfo: AuthState}>, translateService: TranslateService, /*translate: TranslatePipe*/) {
+  constructor(public authService: AuthServiceService, private store: Store<{ authInfo: AuthState }>, translateService: TranslateService,
+    private ref: ChangeDetectorRef /*translate: TranslatePipe*/) {
     this.authInfo$ = this.store.select(state => state.authInfo);
     this.translateService = translateService;
     //this.translate = translate;
@@ -46,6 +47,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   onChangeLanguageSelect(language: string) {
     console.log(language);
     this.translateService.use(language);
+    //this.ref.detach();
   }
 
   LogoutClickHandler() {

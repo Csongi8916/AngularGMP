@@ -29,7 +29,7 @@ export class CoursePageComponent implements OnInit, OnChanges {
   addTitleText: string;
   loadMoreText: string;
 
-  constructor(private courseService: CourseService, public dialog: MatDialog, private router: Router, private store: Store<{authInfo: CourseState}>,
+  constructor(private courseService: CourseService, public dialog: MatDialog, private router: Router, private store: Store<{ authInfo: CourseState }>,
     translateService: TranslateService) {
     console.log('Running: constructor()');
     this.translateService = translateService;
@@ -51,14 +51,14 @@ export class CoursePageComponent implements OnInit, OnChanges {
 
   private searchMethod(): void {
     this.subject
-    .pipe(debounceTime(500))
-    .subscribe(v => {
-      this.searchInput = v.toLowerCase();
-      this.courseService.searchCourses(this.searchInput).subscribe(result => {
-        this.courses = result;
-        this.courseService.pendingState.next(false);
+      .pipe(debounceTime(500))
+      .subscribe(v => {
+        this.searchInput = v.toLowerCase();
+        this.courseService.searchCourses(this.searchInput).subscribe(result => {
+          this.courses = result;
+          this.courseService.pendingState.next(false);
+        });
       });
-    });
   }
 
   addCourse(): void {
@@ -69,9 +69,9 @@ export class CoursePageComponent implements OnInit, OnChanges {
     this.courseService.getCourses(isLoadMore).subscribe(result => {
       const newCourses = result as Course[];
       if (isLoadMore) {
-        this.courses = [ ...this.courses, ...newCourses ];
+        this.courses = [...this.courses, ...newCourses];
       } else {
-        this.courses = [ ...newCourses ];
+        this.courses = [...newCourses];
       }
       this.courseService.pendingState.next(false);
     });
